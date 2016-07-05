@@ -32,9 +32,6 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
-                                <connections>
-                                    <segue destination="CAc-Qq-8HO" kind="show" id="02c-v2-Kay"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKM-J5-ct2">
                                 <rect key="frame" x="20" y="111" width="255" height="30"/>
