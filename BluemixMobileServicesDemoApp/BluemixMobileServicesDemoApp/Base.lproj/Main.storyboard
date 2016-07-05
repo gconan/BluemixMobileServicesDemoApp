@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BluemixMobileServicesDemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,165 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E7u-Ij-urx">
+                                <rect key="frame" x="179" y="503" width="243" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="243" id="6ay-Ad-mAN"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Tell Watson How Your Day is Going!">
+                                            <attributes>
+                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <segue destination="CAc-Qq-8HO" kind="show" id="02c-v2-Kay"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKM-J5-ct2">
+                                <rect key="frame" x="20" y="111" width="255" height="30"/>
+                                <state key="normal" title="&quot;Much To Learn You Still Have&quot; -Yoda">
+                                    <color key="titleColor" red="0.63585737179487178" green="0.63585737179487178" blue="0.63585737179487178" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="yodaquote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P2T-dE-hmM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m66-ei-5Nh">
+                                <rect key="frame" x="20" y="164" width="255" height="30"/>
+                                <state key="normal" title="&quot;Luke, I am your father&quot; -Darth Vader">
+                                    <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="darthVader:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2WQ-bZ-6iV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Al-p9-a7l">
+                                <rect key="frame" x="20" y="218" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVb-cu-pOn">
+                                <rect key="frame" x="20" y="285" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iP1-A7-Ji2">
+                                <rect key="frame" x="20" y="341" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Gg-Mk-rvg">
+                                <rect key="frame" x="20" y="402" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KFG-3t-gha">
+                                <rect key="frame" x="20" y="20" width="560" height="64"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <string key="text">Click on a quote to have 
+Watson analyze the tone!</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.22534117459895406" blue="0.36592548076923082" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="m66-ei-5Nh" firstAttribute="leading" secondItem="9Al-p9-a7l" secondAttribute="leading" id="1vj-xv-5t0"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="leading" secondItem="SKM-J5-ct2" secondAttribute="leading" id="8Co-Sd-X6W"/>
+                            <constraint firstItem="SKM-J5-ct2" firstAttribute="top" secondItem="KFG-3t-gha" secondAttribute="bottom" constant="27" id="8Zp-fc-EHC"/>
+                            <constraint firstItem="9Al-p9-a7l" firstAttribute="leading" secondItem="IVb-cu-pOn" secondAttribute="leading" id="Ao1-Fn-noT"/>
+                            <constraint firstItem="IVb-cu-pOn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Fy3-EH-gGB"/>
+                            <constraint firstItem="9Al-p9-a7l" firstAttribute="top" secondItem="m66-ei-5Nh" secondAttribute="bottom" constant="24" id="HfU-4n-zT8"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="centerX" secondItem="E7u-Ij-urx" secondAttribute="centerX" id="Ina-Yt-pic"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="JC9-eS-WMC"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Mhk-Wg-9Lo"/>
+                            <constraint firstItem="SKM-J5-ct2" firstAttribute="leading" secondItem="m66-ei-5Nh" secondAttribute="leading" id="Oiy-Yi-aaj"/>
+                            <constraint firstItem="iP1-A7-Ji2" firstAttribute="leading" secondItem="0Gg-Mk-rvg" secondAttribute="leading" id="Uh3-Rr-I6H"/>
+                            <constraint firstItem="0Gg-Mk-rvg" firstAttribute="top" secondItem="iP1-A7-Ji2" secondAttribute="bottom" constant="31" id="XLo-OY-tsA"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ij0-9S-DO7"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="E7u-Ij-urx" secondAttribute="bottom" constant="67" id="kzm-Je-Vu6"/>
+                            <constraint firstItem="iP1-A7-Ji2" firstAttribute="top" secondItem="IVb-cu-pOn" secondAttribute="bottom" constant="26" id="wr4-1S-n3A"/>
+                            <constraint firstItem="m66-ei-5Nh" firstAttribute="top" secondItem="SKM-J5-ct2" secondAttribute="bottom" constant="23" id="xKF-ea-vMv"/>
+                            <constraint firstItem="IVb-cu-pOn" firstAttribute="leading" secondItem="iP1-A7-Ji2" secondAttribute="leading" id="xLi-w3-3ys"/>
+                            <constraint firstItem="IVb-cu-pOn" firstAttribute="top" secondItem="9Al-p9-a7l" secondAttribute="bottom" constant="37" id="zBb-M7-jO6"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="323" y="339"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2Yu-UP-5gC">
+            <objects>
+                <viewController id="CAc-Qq-8HO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iY9-ZC-IRQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="QBm-uf-BR6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HaO-9O-hsx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uaF-mw-zsV">
+                                <rect key="frame" x="180" y="28" width="240" height="133"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="0sV-yC-bmS"/>
+                                </constraints>
+                                <string key="text">Enter your email address to recieve the github link to this project and to learn more about what Bluemix can do for your business.
+
+**NOTE: we will NOT save your address, this is a one-time email**</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqu-xO-wUu">
+                                <rect key="frame" x="153" y="285" width="294" height="30"/>
+                                <state key="normal" title="Send My Email Without Saving My Address"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Email Address" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N1q-fb-HDO">
+                                <rect key="frame" x="204" y="196" width="192" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="192" id="UbS-Lg-GtU"/>
+                                </constraints>
+                                <color key="textColor" red="0.94511217950000004" green="0.94511217950000004" blue="0.94511217950000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                        <color key="value" red="0.53741987179487172" green="0.53741987179487172" blue="0.53741987179487172" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.2253411746" blue="0.36592548079999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Nqu-xO-wUu" firstAttribute="centerY" secondItem="HaO-9O-hsx" secondAttribute="centerY" id="K9P-uO-71G"/>
+                            <constraint firstItem="N1q-fb-HDO" firstAttribute="top" secondItem="uaF-mw-zsV" secondAttribute="bottom" constant="35" id="Lno-iX-Q7S"/>
+                            <constraint firstItem="uaF-mw-zsV" firstAttribute="top" secondItem="iY9-ZC-IRQ" secondAttribute="bottom" constant="8" symbolic="YES" id="VUI-KX-dw3"/>
+                            <constraint firstItem="N1q-fb-HDO" firstAttribute="centerX" secondItem="Nqu-xO-wUu" secondAttribute="centerX" id="epk-Io-d1t"/>
+                            <constraint firstItem="Nqu-xO-wUu" firstAttribute="top" secondItem="N1q-fb-HDO" secondAttribute="bottom" constant="59" id="hmA-NR-uXH"/>
+                            <constraint firstItem="uaF-mw-zsV" firstAttribute="centerX" secondItem="HaO-9O-hsx" secondAttribute="centerX" id="q9y-fh-YNS"/>
+                            <constraint firstItem="uaF-mw-zsV" firstAttribute="centerX" secondItem="N1q-fb-HDO" secondAttribute="centerX" id="zHg-mg-xo2"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7dE-5T-27g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1025" y="172"/>
         </scene>
     </scenes>
 </document>

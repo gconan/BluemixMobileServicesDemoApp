@@ -12,6 +12,7 @@
 		CECCCC501D2C380000868C29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECCCC4E1D2C380000868C29 /* Main.storyboard */; };
 		CECCCC521D2C380000868C29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECCCC511D2C380000868C29 /* Assets.xcassets */; };
 		CECCCC551D2C380000868C29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECCCC531D2C380000868C29 /* LaunchScreen.storyboard */; };
+		CECCCC5D1D2C530700868C29 /* EmailLinksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCCC5C1D2C530700868C29 /* EmailLinksController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		CECCCC511D2C380000868C29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CECCCC541D2C380000868C29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CECCCC561D2C380000868C29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CECCCC5C1D2C530700868C29 /* EmailLinksController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLinksController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				CECCCC511D2C380000868C29 /* Assets.xcassets */,
 				CECCCC531D2C380000868C29 /* LaunchScreen.storyboard */,
 				CECCCC561D2C380000868C29 /* Info.plist */,
+				CECCCC5C1D2C530700868C29 /* EmailLinksController.swift */,
 			);
 			path = BluemixMobileServicesDemoApp;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CECCCC4D1D2C380000868C29 /* ViewController.swift in Sources */,
+				CECCCC5D1D2C530700868C29 /* EmailLinksController.swift in Sources */,
 				CECCCC4B1D2C380000868C29 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
