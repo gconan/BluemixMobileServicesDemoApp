@@ -21,7 +21,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E7u-Ij-urx">
                                 <rect key="frame" x="179" y="503" width="243" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="243" id="6ay-Ad-mAN"/>
+                                    <constraint firstAttribute="width" constant="243" id="zUG-My-Wsa"/>
                                 </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
@@ -32,10 +32,13 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <segue destination="CAc-Qq-8HO" kind="show" id="agU-uR-ThP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKM-J5-ct2">
-                                <rect key="frame" x="20" y="111" width="255" height="30"/>
-                                <state key="normal" title="&quot;Much To Learn You Still Have&quot; -Yoda">
+                                <rect key="frame" x="20" y="128" width="97" height="30"/>
+                                <state key="normal" title="Ron Burgandy">
                                     <color key="titleColor" red="0.63585737179487178" green="0.63585737179487178" blue="0.63585737179487178" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -44,68 +47,61 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m66-ei-5Nh">
-                                <rect key="frame" x="20" y="164" width="255" height="30"/>
-                                <state key="normal" title="&quot;Luke, I am your father&quot; -Darth Vader">
+                                <rect key="frame" x="20" y="188" width="83" height="30"/>
+                                <state key="normal" title="Darth Vader">
                                     <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="darthVader:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2WQ-bZ-6iV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Al-p9-a7l">
-                                <rect key="frame" x="20" y="218" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVb-cu-pOn">
-                                <rect key="frame" x="20" y="285" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iP1-A7-Ji2">
-                                <rect key="frame" x="20" y="341" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Gg-Mk-rvg">
-                                <rect key="frame" x="20" y="402" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                                <rect key="frame" x="20" y="317" width="93" height="30"/>
+                                <state key="normal" title="Jack Sparrow">
                                     <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KFG-3t-gha">
-                                <rect key="frame" x="20" y="20" width="560" height="64"/>
+                                <rect key="frame" x="20" y="20" width="560" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <string key="text">Click on a quote to have 
-Watson analyze the tone!</string>
+                                <string key="text">Click on a character to have Watson analyze that character's tone.
+
+Tell Watson how your day is going, and he will analyze your tone, then match you to the closest movie character</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Al-p9-a7l">
+                                <rect key="frame" x="20" y="254" width="71" height="30"/>
+                                <state key="normal" title="Water Boy">
+                                    <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iP1-A7-Ji2">
+                                <rect key="frame" x="20" y="393" width="85" height="30"/>
+                                <state key="normal" title="James Bond">
+                                    <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.22534117459895406" blue="0.36592548076923082" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="m66-ei-5Nh" firstAttribute="leading" secondItem="9Al-p9-a7l" secondAttribute="leading" id="1vj-xv-5t0"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="leading" secondItem="SKM-J5-ct2" secondAttribute="leading" id="8Co-Sd-X6W"/>
-                            <constraint firstItem="SKM-J5-ct2" firstAttribute="top" secondItem="KFG-3t-gha" secondAttribute="bottom" constant="27" id="8Zp-fc-EHC"/>
-                            <constraint firstItem="9Al-p9-a7l" firstAttribute="leading" secondItem="IVb-cu-pOn" secondAttribute="leading" id="Ao1-Fn-noT"/>
-                            <constraint firstItem="IVb-cu-pOn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Fy3-EH-gGB"/>
-                            <constraint firstItem="9Al-p9-a7l" firstAttribute="top" secondItem="m66-ei-5Nh" secondAttribute="bottom" constant="24" id="HfU-4n-zT8"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="centerX" secondItem="E7u-Ij-urx" secondAttribute="centerX" id="Ina-Yt-pic"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="JC9-eS-WMC"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Mhk-Wg-9Lo"/>
-                            <constraint firstItem="SKM-J5-ct2" firstAttribute="leading" secondItem="m66-ei-5Nh" secondAttribute="leading" id="Oiy-Yi-aaj"/>
-                            <constraint firstItem="iP1-A7-Ji2" firstAttribute="leading" secondItem="0Gg-Mk-rvg" secondAttribute="leading" id="Uh3-Rr-I6H"/>
-                            <constraint firstItem="0Gg-Mk-rvg" firstAttribute="top" secondItem="iP1-A7-Ji2" secondAttribute="bottom" constant="31" id="XLo-OY-tsA"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ij0-9S-DO7"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="E7u-Ij-urx" secondAttribute="bottom" constant="67" id="kzm-Je-Vu6"/>
-                            <constraint firstItem="iP1-A7-Ji2" firstAttribute="top" secondItem="IVb-cu-pOn" secondAttribute="bottom" constant="26" id="wr4-1S-n3A"/>
-                            <constraint firstItem="m66-ei-5Nh" firstAttribute="top" secondItem="SKM-J5-ct2" secondAttribute="bottom" constant="23" id="xKF-ea-vMv"/>
-                            <constraint firstItem="IVb-cu-pOn" firstAttribute="leading" secondItem="iP1-A7-Ji2" secondAttribute="leading" id="xLi-w3-3ys"/>
-                            <constraint firstItem="IVb-cu-pOn" firstAttribute="top" secondItem="9Al-p9-a7l" secondAttribute="bottom" constant="37" id="zBb-M7-jO6"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="centerX" secondItem="E7u-Ij-urx" secondAttribute="centerX" id="0Wp-pD-B6L"/>
+                            <constraint firstItem="IVb-cu-pOn" firstAttribute="leading" secondItem="iP1-A7-Ji2" secondAttribute="leading" id="16J-Qp-GgP"/>
+                            <constraint firstItem="9Al-p9-a7l" firstAttribute="leading" secondItem="IVb-cu-pOn" secondAttribute="leading" id="294-6h-ZL3"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="F7P-6y-dpo"/>
+                            <constraint firstItem="SKM-J5-ct2" firstAttribute="top" secondItem="KFG-3t-gha" secondAttribute="bottom" constant="8" symbolic="YES" id="Hy7-Dd-aTz"/>
+                            <constraint firstItem="iP1-A7-Ji2" firstAttribute="top" secondItem="IVb-cu-pOn" secondAttribute="bottom" constant="46" id="KKL-p8-PWh"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="M6t-FT-1XI"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="S1V-j7-SIu"/>
+                            <constraint firstItem="m66-ei-5Nh" firstAttribute="top" secondItem="SKM-J5-ct2" secondAttribute="bottom" constant="30" id="Xwr-Fu-gf5"/>
+                            <constraint firstItem="IVb-cu-pOn" firstAttribute="top" secondItem="9Al-p9-a7l" secondAttribute="bottom" constant="33" id="alx-4y-jgN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iP1-A7-Ji2" secondAttribute="bottom" constant="177" id="kIl-GD-qeu"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="leading" secondItem="SKM-J5-ct2" secondAttribute="leading" id="ncB-gG-Xdc"/>
+                            <constraint firstItem="9Al-p9-a7l" firstAttribute="top" secondItem="m66-ei-5Nh" secondAttribute="bottom" constant="36" id="s8X-eR-tZN"/>
+                            <constraint firstItem="SKM-J5-ct2" firstAttribute="leading" secondItem="m66-ei-5Nh" secondAttribute="leading" id="u3a-kF-uvb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="E7u-Ij-urx" secondAttribute="bottom" constant="67" id="xuK-vG-vly"/>
+                            <constraint firstItem="m66-ei-5Nh" firstAttribute="leading" secondItem="9Al-p9-a7l" secondAttribute="leading" id="yIn-Cb-S1Z"/>
                         </constraints>
                     </view>
                 </viewController>
