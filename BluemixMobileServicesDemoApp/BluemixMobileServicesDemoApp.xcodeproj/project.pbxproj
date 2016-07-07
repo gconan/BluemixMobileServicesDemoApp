@@ -17,6 +17,8 @@
 		CECCD4621D2EBA7500112294 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCD45F1D2EBA7500112294 /* HttpClient.swift */; };
 		CECCD4631D2EBA7500112294 /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCD4601D2EBA7500112294 /* HttpError.swift */; };
 		CECCD4641D2EBA7500112294 /* HttpResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCD4611D2EBA7500112294 /* HttpResource.swift */; };
+		CECCD4661D2ED76100112294 /* SpeechToTextV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CECCD4651D2ED76100112294 /* SpeechToTextV1.framework */; };
+		CECCD4681D2ED76F00112294 /* ToneAnalyzerV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CECCD4671D2ED76F00112294 /* ToneAnalyzerV3.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		CECCD45F1D2EBA7500112294 /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		CECCD4601D2EBA7500112294 /* HttpError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpError.swift; sourceTree = "<group>"; };
 		CECCD4611D2EBA7500112294 /* HttpResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpResource.swift; sourceTree = "<group>"; };
+		CECCD4651D2ED76100112294 /* SpeechToTextV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechToTextV1.framework; path = Carthage/Build/iOS/SpeechToTextV1.framework; sourceTree = "<group>"; };
+		CECCD4671D2ED76F00112294 /* ToneAnalyzerV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToneAnalyzerV3.framework; path = Carthage/Build/iOS/ToneAnalyzerV3.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +45,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECCD4681D2ED76F00112294 /* ToneAnalyzerV3.framework in Frameworks */,
 				89658E5775E99DB09F038316 /* Pods_BluemixMobileServicesDemoApp.framework in Frameworks */,
+				CECCD4661D2ED76100112294 /* SpeechToTextV1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +66,8 @@
 		96E46CB94A295C0E6B3DC33B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CECCD4671D2ED76F00112294 /* ToneAnalyzerV3.framework */,
+				CECCD4651D2ED76100112294 /* SpeechToTextV1.framework */,
 				ACBC896BEEB26DCDD3EA895E /* Pods_BluemixMobileServicesDemoApp.framework */,
 			);
 			name = Frameworks;
@@ -191,6 +199,8 @@
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ToneAnalyzerV3.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SpeechToTextV1.framework",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -206,6 +216,8 @@
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ToneAnalyzerV3.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SpeechToTextV1.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -341,6 +353,10 @@
 			baseConfigurationReference = 8B4CCFAD80F24D6AA99F4CB6 /* Pods-BluemixMobileServicesDemoApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BluemixMobileServicesDemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.BluemixMobileServicesDemoApp;
@@ -353,6 +369,10 @@
 			baseConfigurationReference = B33D6EC7B296CB62AA4AC32E /* Pods-BluemixMobileServicesDemoApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BluemixMobileServicesDemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.BluemixMobileServicesDemoApp;

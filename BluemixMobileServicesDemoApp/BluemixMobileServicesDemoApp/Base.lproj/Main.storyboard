@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,11 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E7u-Ij-urx">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E7u-Ij-urx">
                                 <rect key="frame" x="179" y="503" width="243" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="243" id="zUG-My-Wsa"/>
-                                </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Tell Watson How Your Day is Going!">
@@ -36,45 +32,25 @@
                                     <action selector="compareUserToCharacters:" destination="BYZ-38-t0r" eventType="touchUpInside" id="97q-gw-MPt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKM-J5-ct2">
-                                <rect key="frame" x="20" y="128" width="97" height="30"/>
-                                <state key="normal" title="Ron Burgandy">
-                                    <color key="titleColor" red="0.63585737179487178" green="0.63585737179487178" blue="0.63585737179487178" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="ronBurgandy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JoS-gn-DpS"/>
-                                    <action selector="yodaquote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P2T-dE-hmM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m66-ei-5Nh">
-                                <rect key="frame" x="20" y="188" width="83" height="30"/>
-                                <state key="normal" title="Darth Vader">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m66-ei-5Nh">
+                                <rect key="frame" x="322" y="178" width="100" height="76"/>
+                                <state key="normal" image="vader">
                                     <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="darthVader:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xOP-ZV-fHW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVb-cu-pOn">
-                                <rect key="frame" x="20" y="317" width="93" height="30"/>
-                                <state key="normal" title="Jack Sparrow">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVb-cu-pOn">
+                                <rect key="frame" x="151" y="288" width="105" height="95"/>
+                                <state key="normal" image="jack">
                                     <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="jackSparrow:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xAX-pJ-nfx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iP1-A7-Ji2">
-                                <rect key="frame" x="20" y="393" width="85" height="30"/>
-                                <state key="normal" title="James Bond">
-                                    <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="bondJamesBond:" destination="BYZ-38-t0r" eventType="touchUpInside" id="30g-SU-U9v"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KFG-3t-gha">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KFG-3t-gha">
                                 <rect key="frame" x="20" y="20" width="560" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <string key="text">Click on a character to have Watson analyze that character's tone.
@@ -84,40 +60,33 @@ Tell Watson how your day is going, and he will analyze your tone, then match you
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Al-p9-a7l">
-                                <rect key="frame" x="24" y="254" width="113" height="30"/>
-                                <state key="normal" title="Ellen DeGeneres">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iP1-A7-Ji2">
+                                <rect key="frame" x="310" y="304" width="139" height="79"/>
+                                <state key="normal" image="bond">
                                     <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="ellenD:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XPk-r1-vyb"/>
+                                    <action selector="bondJamesBond:" destination="BYZ-38-t0r" eventType="touchUpInside" id="30g-SU-U9v"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKM-J5-ct2">
+                                <rect key="frame" x="168" y="171" width="71" height="90"/>
+                                <state key="normal" image="ron">
+                                    <color key="titleColor" red="0.63585737179487178" green="0.63585737179487178" blue="0.63585737179487178" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="ronBurgandy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JoS-gn-DpS"/>
+                                    <action selector="yodaquote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P2T-dE-hmM"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.22534117459895406" blue="0.36592548076923082" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="centerX" secondItem="E7u-Ij-urx" secondAttribute="centerX" id="0Wp-pD-B6L"/>
-                            <constraint firstItem="IVb-cu-pOn" firstAttribute="leading" secondItem="iP1-A7-Ji2" secondAttribute="leading" id="16J-Qp-GgP"/>
-                            <constraint firstItem="9Al-p9-a7l" firstAttribute="leading" secondItem="IVb-cu-pOn" secondAttribute="leading" id="294-6h-ZL3"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="F7P-6y-dpo"/>
-                            <constraint firstItem="SKM-J5-ct2" firstAttribute="top" secondItem="KFG-3t-gha" secondAttribute="bottom" constant="8" symbolic="YES" id="Hy7-Dd-aTz"/>
-                            <constraint firstItem="iP1-A7-Ji2" firstAttribute="top" secondItem="IVb-cu-pOn" secondAttribute="bottom" constant="46" id="KKL-p8-PWh"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="M6t-FT-1XI"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="S1V-j7-SIu"/>
-                            <constraint firstItem="m66-ei-5Nh" firstAttribute="top" secondItem="SKM-J5-ct2" secondAttribute="bottom" constant="30" id="Xwr-Fu-gf5"/>
-                            <constraint firstItem="IVb-cu-pOn" firstAttribute="top" secondItem="9Al-p9-a7l" secondAttribute="bottom" constant="33" id="alx-4y-jgN"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iP1-A7-Ji2" secondAttribute="bottom" constant="177" id="kIl-GD-qeu"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="leading" secondItem="SKM-J5-ct2" secondAttribute="leading" id="ncB-gG-Xdc"/>
-                            <constraint firstItem="9Al-p9-a7l" firstAttribute="top" secondItem="m66-ei-5Nh" secondAttribute="bottom" constant="36" id="s8X-eR-tZN"/>
-                            <constraint firstItem="SKM-J5-ct2" firstAttribute="leading" secondItem="m66-ei-5Nh" secondAttribute="leading" id="u3a-kF-uvb"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="E7u-Ij-urx" secondAttribute="bottom" constant="67" id="xuK-vG-vly"/>
-                            <constraint firstItem="m66-ei-5Nh" firstAttribute="leading" secondItem="9Al-p9-a7l" secondAttribute="leading" id="yIn-Cb-S1Z"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="323" y="339"/>
+            <point key="canvasLocation" x="311" y="348"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="2Yu-UP-5gC">
@@ -181,4 +150,10 @@ Tell Watson how your day is going, and he will analyze your tone, then match you
             <point key="canvasLocation" x="1025" y="172"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bond" width="970" height="545"/>
+        <image name="jack" width="700" height="774"/>
+        <image name="ron" width="309" height="463"/>
+        <image name="vader" width="300" height="200"/>
+    </resources>
 </document>

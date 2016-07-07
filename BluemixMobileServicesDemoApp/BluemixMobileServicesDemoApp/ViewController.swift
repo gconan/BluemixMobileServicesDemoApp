@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ToneAnalyzerV3
+import SpeechToTextV1
 
 class ViewController: UIViewController {
     
@@ -24,9 +26,7 @@ class ViewController: UIViewController {
     
     let DarthV_Quotes: [String] = ["No, I am your father.","Don’t be too proud of this technological terror you’ve constructed. The ability to destroy a planet is insignificant next to the power of the Force. I find your lack of faith disturbing.","I am altering the deal. Pray I don’t alter it any further.","I see through the lies of the Jedi. I do not fear the dark side as you do. I have brought peace, freedom, justice, and security to my new empire.","Luke, you can destroy the Emperor. He has foreseen this. It is your destiny. Join me, and together we can rule the galaxy as father and son."]
     
-    let EllenD_Quotes: [String] = ["You have to stay in shape. My grandmother, she started walking five miles a day when she was 60. She's 97 today and we don't know where the hell she is.","Sometimes you can't see yourself clearly until you see yourself through the eyes of others.","In the beginning there was nothing. God said, 'Let there be light!' And there was light. There was still nothing, but you could see it a whole lot better.", "If we're destroying our trees and destroying our environment and hurting animals and hurting one another and all that stuff, there's got to be a very powerful energy to fight that. I think we need more love in the world. We need more kindness, more compassion, more joy, more laughter. I definitely want to contribute to that.", "Here are the values that I stand for: honesty, equality, kindness, compassion, treating people the way you want to be treated and helping those in need. To me, those are traditional values."]
-    
-    let JackS_Quotes: [String] = ["Why is the rum always gone?", "Why fight when you can negotiate?", "This is the day you will always remember as the day you almost caught me.", "The seas may be rough, but I am the captain!", "No matter how difficult, I will always prevail.", "Me? I'm dishonest, and a dishonest man you can always trust to be dishonest. Honestly. It's the honest ones you want to watch out for.", "You're the one in need of resucing and I'm not sure if I'm in the mood.", "Why should I sail with any of you? Four of you tried to kill me in the past, one of you succeeded."]
+    let JackS_Quotes: [String] = ["Why is the rum always gone?", "Why fight when you can negotiate?", "This is the day you will always remember as the day you almost caught me.", "The seas may be rough, but I am the captain! No matter how difficult, I will always prevail.", "Me? I'm dishonest, and a dishonest man you can always trust to be dishonest. Honestly. It's the honest ones you want to watch out for.", "You're the one in need of resucing and I'm not sure if I'm in the mood.", "Why should I sail with any of you? Four of you tried to kill me in the past, one of you succeeded."]
     
     let JamesB_Quotes: [String] = ["I don't stop when I'm tired, I stop when I'm done","It takes a certain kind of woman to wear a backless dress and a gun strapped to her thigh", "A Martini. Shaken, not stirred", "Be polite, be courteous, show professionalism, and have a plan to kill everyone in the room", "Killing and dying, it's all a matter of perspective", "My name is Bond, James Bond", "I don’t know, I’ve never lost.", "My dear girl, there are some things that just aren’t done. Such as, drinking Dom Perignon ’53 above the temperature of 38 degrees Fahrenheit. That’s just as bad as listening to the Beatles without earmuffs."]
     
@@ -46,14 +46,39 @@ class ViewController: UIViewController {
 //            HttpClient.post(resource: <#T##HttpResource#>)
 //        }
     }
+    
     @IBAction func darthVader(sender: AnyObject) {
+        
     }
-    @IBAction func ellenD(sender: AnyObject) {
-    }
+    
     @IBAction func jackSparrow(sender: AnyObject) {
+        
     }
+    
     @IBAction func bondJamesBond(sender: AnyObject) {
+        
     }
+    
     @IBAction func compareUserToCharacters(sender: AnyObject) {
+        
+        let username = "your-username-here"
+        let password = "your-password-here"
+        let speechToText = SpeechToText(username: username, password: password)
+        
+        // define transcription settings
+        var settings = TranscriptionSettings(contentType: .L16(rate: 44100, channels: 1))
+        settings.continuous = true
+        settings.interimResults = true
+        
+        // start streaming audio and print transcripts
+        let failure = { (error: NSError) in print(error) }
+        let stopStreaming = speechToText.transcribe(settings, failure: failure) { results in
+            print(results.last?.alternatives.last?.transcript)
+        }
+        
+        
+        // Streaming will continue until either an end-of-speech event is detected by
+        // the Speech to Text service or the `stopStreaming` function is executed.
+        
     }
 }
