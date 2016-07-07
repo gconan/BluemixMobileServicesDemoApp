@@ -7,15 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89658E5775E99DB09F038316 /* Pods_BluemixMobileServicesDemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBC896BEEB26DCDD3EA895E /* Pods_BluemixMobileServicesDemoApp.framework */; };
 		CECCCC4B1D2C380000868C29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCCC4A1D2C380000868C29 /* AppDelegate.swift */; };
 		CECCCC4D1D2C380000868C29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCCC4C1D2C380000868C29 /* ViewController.swift */; };
 		CECCCC501D2C380000868C29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECCCC4E1D2C380000868C29 /* Main.storyboard */; };
 		CECCCC521D2C380000868C29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECCCC511D2C380000868C29 /* Assets.xcassets */; };
 		CECCCC551D2C380000868C29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECCCC531D2C380000868C29 /* LaunchScreen.storyboard */; };
 		CECCCC5D1D2C530700868C29 /* EmailLinksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCCC5C1D2C530700868C29 /* EmailLinksController.swift */; };
+		CECCD4621D2EBA7500112294 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCD45F1D2EBA7500112294 /* HttpClient.swift */; };
+		CECCD4631D2EBA7500112294 /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCD4601D2EBA7500112294 /* HttpError.swift */; };
+		CECCD4641D2EBA7500112294 /* HttpResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCD4611D2EBA7500112294 /* HttpResource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B4CCFAD80F24D6AA99F4CB6 /* Pods-BluemixMobileServicesDemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BluemixMobileServicesDemoApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BluemixMobileServicesDemoApp/Pods-BluemixMobileServicesDemoApp.debug.xcconfig"; sourceTree = "<group>"; };
+		ACBC896BEEB26DCDD3EA895E /* Pods_BluemixMobileServicesDemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BluemixMobileServicesDemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B33D6EC7B296CB62AA4AC32E /* Pods-BluemixMobileServicesDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BluemixMobileServicesDemoApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-BluemixMobileServicesDemoApp/Pods-BluemixMobileServicesDemoApp.release.xcconfig"; sourceTree = "<group>"; };
 		CECCCC471D2C380000868C29 /* BluemixMobileServicesDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluemixMobileServicesDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECCCC4A1D2C380000868C29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECCCC4C1D2C380000868C29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +31,9 @@
 		CECCCC541D2C380000868C29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CECCCC561D2C380000868C29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CECCCC5C1D2C530700868C29 /* EmailLinksController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLinksController.swift; sourceTree = "<group>"; };
+		CECCD45F1D2EBA7500112294 /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		CECCD4601D2EBA7500112294 /* HttpError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpError.swift; sourceTree = "<group>"; };
+		CECCD4611D2EBA7500112294 /* HttpResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpResource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +41,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89658E5775E99DB09F038316 /* Pods_BluemixMobileServicesDemoApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		66CBA8EE178CE84D04B2AAAB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8B4CCFAD80F24D6AA99F4CB6 /* Pods-BluemixMobileServicesDemoApp.debug.xcconfig */,
+				B33D6EC7B296CB62AA4AC32E /* Pods-BluemixMobileServicesDemoApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		96E46CB94A295C0E6B3DC33B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ACBC896BEEB26DCDD3EA895E /* Pods_BluemixMobileServicesDemoApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CECCCC3E1D2C380000868C29 = {
 			isa = PBXGroup;
 			children = (
 				CECCCC491D2C380000868C29 /* BluemixMobileServicesDemoApp */,
 				CECCCC481D2C380000868C29 /* Products */,
+				66CBA8EE178CE84D04B2AAAB /* Pods */,
+				96E46CB94A295C0E6B3DC33B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +86,9 @@
 		CECCCC491D2C380000868C29 /* BluemixMobileServicesDemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				CECCD45F1D2EBA7500112294 /* HttpClient.swift */,
+				CECCD4601D2EBA7500112294 /* HttpError.swift */,
+				CECCD4611D2EBA7500112294 /* HttpResource.swift */,
 				CECCCC4A1D2C380000868C29 /* AppDelegate.swift */,
 				CECCCC4C1D2C380000868C29 /* ViewController.swift */,
 				CECCCC4E1D2C380000868C29 /* Main.storyboard */,
@@ -74,9 +107,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CECCCC591D2C380000868C29 /* Build configuration list for PBXNativeTarget "BluemixMobileServicesDemoApp" */;
 			buildPhases = (
+				71E2C0E72A13DA7F36F9C203 /* [CP] Check Pods Manifest.lock */,
 				CECCCC431D2C380000868C29 /* Sources */,
 				CECCCC441D2C380000868C29 /* Frameworks */,
 				CECCCC451D2C380000868C29 /* Resources */,
+				8087F479DBABADFC2EAEE6EC /* [CP] Embed Pods Frameworks */,
+				720CD1DDB5124733E00722AD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,6 +169,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		71E2C0E72A13DA7F36F9C203 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		720CD1DDB5124733E00722AD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BluemixMobileServicesDemoApp/Pods-BluemixMobileServicesDemoApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8087F479DBABADFC2EAEE6EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BluemixMobileServicesDemoApp/Pods-BluemixMobileServicesDemoApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CECCCC431D2C380000868C29 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -140,6 +224,9 @@
 			files = (
 				CECCCC4D1D2C380000868C29 /* ViewController.swift in Sources */,
 				CECCCC5D1D2C530700868C29 /* EmailLinksController.swift in Sources */,
+				CECCD4631D2EBA7500112294 /* HttpError.swift in Sources */,
+				CECCD4641D2EBA7500112294 /* HttpResource.swift in Sources */,
+				CECCD4621D2EBA7500112294 /* HttpClient.swift in Sources */,
 				CECCCC4B1D2C380000868C29 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +338,7 @@
 		};
 		CECCCC5A1D2C380000868C29 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B4CCFAD80F24D6AA99F4CB6 /* Pods-BluemixMobileServicesDemoApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BluemixMobileServicesDemoApp/Info.plist;
@@ -262,6 +350,7 @@
 		};
 		CECCCC5B1D2C380000868C29 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B33D6EC7B296CB62AA4AC32E /* Pods-BluemixMobileServicesDemoApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BluemixMobileServicesDemoApp/Info.plist;
@@ -290,6 +379,7 @@
 				CECCCC5B1D2C380000868C29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -42,6 +42,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func ronBurgandy(sender: AnyObject) {
+//        for s:String in RonB_Quotes{
+//            HttpClient.post(resource: <#T##HttpResource#>)
+//        }
     }
     @IBAction func darthVader(sender: AnyObject) {
     }
