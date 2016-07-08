@@ -9,17 +9,26 @@
 import UIKit
 import ToneAnalyzerV3
 import SpeechToTextV1
+import SwiftyJSON
 
 class ViewController: UIViewController {
     
-    /* We ran the tone analysis on each character before hand
-        to get an average. This way we can speed up the comparison
-        between the characters to a live voice */
-    let RonB_AverageScore = []
-    let DarthV_AverageScore = []
-    let EllenD_AverageScore = []
-    let JackS_AverageScore = []
-    let JamesB_AverageScore = []
+    var AverageScores: [MovieCharacter: ToneScore] = [:]
+    
+    //JSON parsing helpers
+    let Score = "score"
+    let Document = "document_tone"
+    let ToneCategories = "tone_categories"
+    let Tones = "tones"
+    
+    //Characters
+    enum MovieCharacter{
+        case RonBurgandy
+        case DarthVader
+        case JackSparrow
+        case JamesBond
+    }
+    
     
     //quotes
     let RonB_Quotes: [String] = ["What? You pooped in the refrigerator? And you ate the whole wheel of cheese? How’d you do that? Heck, I’m not even mad; that’s amazing.","I don't know how to put this but I'm kind of a big deal. People know me. I'm very important. I have many leather-bound books and my apartment smells of rich mahogany.", "Mmm. I look good. I mean, really good. Hey, everyone! Come and see how good I look!", "You know how to cut to the core of me, Baxter. You're so wise. You're like a miniature Buddha covered in hair.", "Guess what, I do. I know that one day Veronica and I are gonna to get married on top of a mountain, and there’s going to be flutes playing and trombones and flowers and garlands of fresh herbs. And we will dance till the sun rises. And then our children will form a family band. And we will tour the countryside and you won’t be invited."]
@@ -34,7 +43,33 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.AverageScores[MovieCharacter.RonBurgandy] = ToneScore()
+        self.AverageScores[MovieCharacter.DarthVader] = ToneScore()
+        self.AverageScores[MovieCharacter.JackSparrow] = ToneScore()
+        self.AverageScores[MovieCharacter.JamesBond] = ToneScore()
+        
+        for s:String in RonB_Quotes{
+            let rawScore:JSON = []//get real tone analysis
+            self.addScoreToAverage(rawScore, character: MovieCharacter.RonBurgandy)
+        }
+        
+        for s:String in DarthV_Quotes{
+            let rawScore:JSON = []//get real tone analysis
+            self.addScoreToAverage(rawScore, character: MovieCharacter.DarthVader)
+        }
+        
+        for s:String in JackS_Quotes{
+            let rawScore:JSON = []//get real tone analysis
+            self.addScoreToAverage(rawScore, character: MovieCharacter.JackSparrow)
+        }
+        
+        for s:String in JamesB_Quotes{
+            let rawScore:JSON = []//get real tone analysis
+            self.addScoreToAverage(rawScore, character: MovieCharacter.JamesBond)
+        }
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,9 +77,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func ronBurgandy(sender: AnyObject) {
-//        for s:String in RonB_Quotes{
-//            HttpClient.post(resource: <#T##HttpResource#>)
-//        }
+
     }
     
     @IBAction func darthVader(sender: AnyObject) {
@@ -79,6 +112,10 @@ class ViewController: UIViewController {
         
         // Streaming will continue until either an end-of-speech event is detected by
         // the Speech to Text service or the `stopStreaming` function is executed.
+        
+    }
+    
+    private func addScoreToAverage(rawJSON:JSON, character:MovieCharacter){
         
     }
 }

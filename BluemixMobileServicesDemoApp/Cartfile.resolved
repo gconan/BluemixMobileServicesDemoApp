@@ -1,4 +1,7 @@
 github "Alamofire/Alamofire" "3.4.1"
 github "bignerdranch/Freddy" "2.1.0"
 github "daltoniam/Starscream" "1.1.3"
+github "SwiftyJSON/SwiftyJSON" "2.3.3"
+github "ibm-bluemix-mobile-services/bms-clientsdk-swift-analytics-api" "1.0.1"
+github "ibm-bluemix-mobile-services/bms-clientsdk-swift-core" "1.0.2"
 github "watson-developer-cloud/ios-sdk" "v0.4.2"

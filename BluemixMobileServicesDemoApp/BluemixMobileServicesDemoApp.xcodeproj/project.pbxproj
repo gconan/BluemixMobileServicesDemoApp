@@ -7,24 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		89658E5775E99DB09F038316 /* Pods_BluemixMobileServicesDemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBC896BEEB26DCDD3EA895E /* Pods_BluemixMobileServicesDemoApp.framework */; };
 		CECCCC4B1D2C380000868C29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCCC4A1D2C380000868C29 /* AppDelegate.swift */; };
 		CECCCC4D1D2C380000868C29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCCC4C1D2C380000868C29 /* ViewController.swift */; };
 		CECCCC501D2C380000868C29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECCCC4E1D2C380000868C29 /* Main.storyboard */; };
 		CECCCC521D2C380000868C29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECCCC511D2C380000868C29 /* Assets.xcassets */; };
 		CECCCC551D2C380000868C29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECCCC531D2C380000868C29 /* LaunchScreen.storyboard */; };
 		CECCCC5D1D2C530700868C29 /* EmailLinksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCCC5C1D2C530700868C29 /* EmailLinksController.swift */; };
-		CECCD4621D2EBA7500112294 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCD45F1D2EBA7500112294 /* HttpClient.swift */; };
-		CECCD4631D2EBA7500112294 /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCD4601D2EBA7500112294 /* HttpError.swift */; };
-		CECCD4641D2EBA7500112294 /* HttpResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCD4611D2EBA7500112294 /* HttpResource.swift */; };
-		CECCD4661D2ED76100112294 /* SpeechToTextV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CECCD4651D2ED76100112294 /* SpeechToTextV1.framework */; };
-		CECCD4681D2ED76F00112294 /* ToneAnalyzerV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CECCD4671D2ED76F00112294 /* ToneAnalyzerV3.framework */; };
+		CECCD46B1D2EFD2700112294 /* SpeechToTextV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CECCD4691D2EFD2700112294 /* SpeechToTextV1.framework */; };
+		CECCD46C1D2EFD2700112294 /* ToneAnalyzerV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CECCD46A1D2EFD2700112294 /* ToneAnalyzerV3.framework */; };
+		CECCD46E1D2EFD5400112294 /* SpeechToTextV1.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CECCD4691D2EFD2700112294 /* SpeechToTextV1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CECCD46F1D2EFD5400112294 /* ToneAnalyzerV3.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CECCD46A1D2EFD2700112294 /* ToneAnalyzerV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CECCD4711D2EFF8E00112294 /* BMSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CECCD4701D2EFF8E00112294 /* BMSCore.framework */; };
+		CECCD4731D2EFFC600112294 /* BMSAnalyticsAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CECCD4721D2EFFC600112294 /* BMSAnalyticsAPI.framework */; };
+		CECCD4741D2EFFD300112294 /* BMSAnalyticsAPI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CECCD4721D2EFFC600112294 /* BMSAnalyticsAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CECCD4751D2EFFD300112294 /* BMSCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CECCD4701D2EFF8E00112294 /* BMSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CECCD4771D2F02A100112294 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CECCD4761D2F02A100112294 /* Alamofire.framework */; };
+		CECCD4791D2F02B900112294 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CECCD4761D2F02A100112294 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CECCD47B1D2F034B00112294 /* Freddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CECCD47A1D2F034B00112294 /* Freddy.framework */; };
+		CECCD47D1D2F035000112294 /* Freddy.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CECCD47A1D2F034B00112294 /* Freddy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CECCD47F1D2F037F00112294 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CECCD47E1D2F037F00112294 /* Starscream.framework */; };
+		CECCD4801D2F037F00112294 /* Starscream.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CECCD47E1D2F037F00112294 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CECCD4821D2F039E00112294 /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CECCD4811D2F039E00112294 /* RestKit.framework */; };
+		CECCD4831D2F039E00112294 /* RestKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CECCD4811D2F039E00112294 /* RestKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CECCD4851D301F0100112294 /* ToneScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCD4841D301F0100112294 /* ToneScore.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CECCD46D1D2EFD4A00112294 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CECCD4741D2EFFD300112294 /* BMSAnalyticsAPI.framework in CopyFiles */,
+				CECCD4801D2F037F00112294 /* Starscream.framework in CopyFiles */,
+				CECCD4751D2EFFD300112294 /* BMSCore.framework in CopyFiles */,
+				CECCD4831D2F039E00112294 /* RestKit.framework in CopyFiles */,
+				CECCD46E1D2EFD5400112294 /* SpeechToTextV1.framework in CopyFiles */,
+				CECCD4791D2F02B900112294 /* Alamofire.framework in CopyFiles */,
+				CECCD47D1D2F035000112294 /* Freddy.framework in CopyFiles */,
+				CECCD46F1D2EFD5400112294 /* ToneAnalyzerV3.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		8B4CCFAD80F24D6AA99F4CB6 /* Pods-BluemixMobileServicesDemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BluemixMobileServicesDemoApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BluemixMobileServicesDemoApp/Pods-BluemixMobileServicesDemoApp.debug.xcconfig"; sourceTree = "<group>"; };
-		ACBC896BEEB26DCDD3EA895E /* Pods_BluemixMobileServicesDemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BluemixMobileServicesDemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B33D6EC7B296CB62AA4AC32E /* Pods-BluemixMobileServicesDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BluemixMobileServicesDemoApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-BluemixMobileServicesDemoApp/Pods-BluemixMobileServicesDemoApp.release.xcconfig"; sourceTree = "<group>"; };
 		CECCCC471D2C380000868C29 /* BluemixMobileServicesDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluemixMobileServicesDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECCCC4A1D2C380000868C29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECCCC4C1D2C380000868C29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,11 +61,15 @@
 		CECCCC541D2C380000868C29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CECCCC561D2C380000868C29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CECCCC5C1D2C530700868C29 /* EmailLinksController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLinksController.swift; sourceTree = "<group>"; };
-		CECCD45F1D2EBA7500112294 /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
-		CECCD4601D2EBA7500112294 /* HttpError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpError.swift; sourceTree = "<group>"; };
-		CECCD4611D2EBA7500112294 /* HttpResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpResource.swift; sourceTree = "<group>"; };
-		CECCD4651D2ED76100112294 /* SpeechToTextV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechToTextV1.framework; path = Carthage/Build/iOS/SpeechToTextV1.framework; sourceTree = "<group>"; };
-		CECCD4671D2ED76F00112294 /* ToneAnalyzerV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToneAnalyzerV3.framework; path = Carthage/Build/iOS/ToneAnalyzerV3.framework; sourceTree = "<group>"; };
+		CECCD4691D2EFD2700112294 /* SpeechToTextV1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechToTextV1.framework; path = Carthage/Build/iOS/SpeechToTextV1.framework; sourceTree = "<group>"; };
+		CECCD46A1D2EFD2700112294 /* ToneAnalyzerV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToneAnalyzerV3.framework; path = Carthage/Build/iOS/ToneAnalyzerV3.framework; sourceTree = "<group>"; };
+		CECCD4701D2EFF8E00112294 /* BMSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSCore.framework; path = Carthage/Build/iOS/BMSCore.framework; sourceTree = "<group>"; };
+		CECCD4721D2EFFC600112294 /* BMSAnalyticsAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSAnalyticsAPI.framework; path = Carthage/Build/iOS/BMSAnalyticsAPI.framework; sourceTree = "<group>"; };
+		CECCD4761D2F02A100112294 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		CECCD47A1D2F034B00112294 /* Freddy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Freddy.framework; path = Carthage/Build/iOS/Freddy.framework; sourceTree = "<group>"; };
+		CECCD47E1D2F037F00112294 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = "<group>"; };
+		CECCD4811D2F039E00112294 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
+		CECCD4841D301F0100112294 /* ToneScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToneScore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,30 +77,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CECCD4681D2ED76F00112294 /* ToneAnalyzerV3.framework in Frameworks */,
-				89658E5775E99DB09F038316 /* Pods_BluemixMobileServicesDemoApp.framework in Frameworks */,
-				CECCD4661D2ED76100112294 /* SpeechToTextV1.framework in Frameworks */,
+				CECCD47B1D2F034B00112294 /* Freddy.framework in Frameworks */,
+				CECCD47F1D2F037F00112294 /* Starscream.framework in Frameworks */,
+				CECCD4771D2F02A100112294 /* Alamofire.framework in Frameworks */,
+				CECCD4821D2F039E00112294 /* RestKit.framework in Frameworks */,
+				CECCD46B1D2EFD2700112294 /* SpeechToTextV1.framework in Frameworks */,
+				CECCD4731D2EFFC600112294 /* BMSAnalyticsAPI.framework in Frameworks */,
+				CECCD46C1D2EFD2700112294 /* ToneAnalyzerV3.framework in Frameworks */,
+				CECCD4711D2EFF8E00112294 /* BMSCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		66CBA8EE178CE84D04B2AAAB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8B4CCFAD80F24D6AA99F4CB6 /* Pods-BluemixMobileServicesDemoApp.debug.xcconfig */,
-				B33D6EC7B296CB62AA4AC32E /* Pods-BluemixMobileServicesDemoApp.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		96E46CB94A295C0E6B3DC33B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CECCD4671D2ED76F00112294 /* ToneAnalyzerV3.framework */,
-				CECCD4651D2ED76100112294 /* SpeechToTextV1.framework */,
-				ACBC896BEEB26DCDD3EA895E /* Pods_BluemixMobileServicesDemoApp.framework */,
+				CECCD47A1D2F034B00112294 /* Freddy.framework */,
+				CECCD4761D2F02A100112294 /* Alamofire.framework */,
+				CECCD4721D2EFFC600112294 /* BMSAnalyticsAPI.framework */,
+				CECCD4701D2EFF8E00112294 /* BMSCore.framework */,
+				CECCD4691D2EFD2700112294 /* SpeechToTextV1.framework */,
+				CECCD46A1D2EFD2700112294 /* ToneAnalyzerV3.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -76,9 +107,10 @@
 		CECCCC3E1D2C380000868C29 = {
 			isa = PBXGroup;
 			children = (
+				CECCD4811D2F039E00112294 /* RestKit.framework */,
+				CECCD47E1D2F037F00112294 /* Starscream.framework */,
 				CECCCC491D2C380000868C29 /* BluemixMobileServicesDemoApp */,
 				CECCCC481D2C380000868C29 /* Products */,
-				66CBA8EE178CE84D04B2AAAB /* Pods */,
 				96E46CB94A295C0E6B3DC33B /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -94,9 +126,6 @@
 		CECCCC491D2C380000868C29 /* BluemixMobileServicesDemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				CECCD45F1D2EBA7500112294 /* HttpClient.swift */,
-				CECCD4601D2EBA7500112294 /* HttpError.swift */,
-				CECCD4611D2EBA7500112294 /* HttpResource.swift */,
 				CECCCC4A1D2C380000868C29 /* AppDelegate.swift */,
 				CECCCC4C1D2C380000868C29 /* ViewController.swift */,
 				CECCCC4E1D2C380000868C29 /* Main.storyboard */,
@@ -104,6 +133,7 @@
 				CECCCC531D2C380000868C29 /* LaunchScreen.storyboard */,
 				CECCCC561D2C380000868C29 /* Info.plist */,
 				CECCCC5C1D2C530700868C29 /* EmailLinksController.swift */,
+				CECCD4841D301F0100112294 /* ToneScore.swift */,
 			);
 			path = BluemixMobileServicesDemoApp;
 			sourceTree = "<group>";
@@ -115,12 +145,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CECCCC591D2C380000868C29 /* Build configuration list for PBXNativeTarget "BluemixMobileServicesDemoApp" */;
 			buildPhases = (
-				71E2C0E72A13DA7F36F9C203 /* [CP] Check Pods Manifest.lock */,
 				CECCCC431D2C380000868C29 /* Sources */,
 				CECCCC441D2C380000868C29 /* Frameworks */,
 				CECCCC451D2C380000868C29 /* Resources */,
-				8087F479DBABADFC2EAEE6EC /* [CP] Embed Pods Frameworks */,
-				720CD1DDB5124733E00722AD /* [CP] Copy Pods Resources */,
+				CECCD46D1D2EFD4A00112294 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -177,68 +205,14 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		71E2C0E72A13DA7F36F9C203 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		720CD1DDB5124733E00722AD /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/ToneAnalyzerV3.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SpeechToTextV1.framework",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BluemixMobileServicesDemoApp/Pods-BluemixMobileServicesDemoApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8087F479DBABADFC2EAEE6EC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/ToneAnalyzerV3.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SpeechToTextV1.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BluemixMobileServicesDemoApp/Pods-BluemixMobileServicesDemoApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		CECCCC431D2C380000868C29 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECCD4851D301F0100112294 /* ToneScore.swift in Sources */,
 				CECCCC4D1D2C380000868C29 /* ViewController.swift in Sources */,
 				CECCCC5D1D2C530700868C29 /* EmailLinksController.swift in Sources */,
-				CECCD4631D2EBA7500112294 /* HttpError.swift in Sources */,
-				CECCD4641D2EBA7500112294 /* HttpResource.swift in Sources */,
-				CECCD4621D2EBA7500112294 /* HttpClient.swift in Sources */,
 				CECCCC4B1D2C380000868C29 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,9 +324,9 @@
 		};
 		CECCCC5A1D2C380000868C29 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B4CCFAD80F24D6AA99F4CB6 /* Pods-BluemixMobileServicesDemoApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -366,9 +340,9 @@
 		};
 		CECCCC5B1D2C380000868C29 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B33D6EC7B296CB62AA4AC32E /* Pods-BluemixMobileServicesDemoApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

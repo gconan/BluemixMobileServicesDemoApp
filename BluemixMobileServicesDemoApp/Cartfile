@@ -1,1 +1,3 @@
+github "ibm-bluemix-mobile-services/bms-clientsdk-swift-core"
 github "watson-developer-cloud/ios-sdk"
+github "SwiftyJSON/SwiftyJSON"
