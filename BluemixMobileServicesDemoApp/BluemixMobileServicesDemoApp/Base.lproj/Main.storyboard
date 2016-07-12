@@ -18,29 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E7u-Ij-urx">
-                                <rect key="frame" x="179" y="503" width="243" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="243" id="vVu-Jx-b6B"/>
-                                </constraints>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Tell Watson How Your Day is Going!">
-                                            <attributes>
-                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                                <connections>
-                                    <action selector="compareUserToCharacters:" destination="BYZ-38-t0r" eventType="touchUpInside" id="97q-gw-MPt"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m66-ei-5Nh">
-                                <rect key="frame" x="322" y="178" width="100" height="76"/>
+                                <rect key="frame" x="480" y="128" width="100" height="82"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="FkF-AF-2Qb"/>
-                                    <constraint firstAttribute="height" constant="76" id="ZVx-I6-mhw"/>
+                                    <constraint firstAttribute="width" constant="100" id="r1a-xe-sVt"/>
                                 </constraints>
                                 <state key="normal" image="vader">
                                     <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -50,10 +31,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVb-cu-pOn">
-                                <rect key="frame" x="151" y="288" width="105" height="95"/>
+                                <rect key="frame" x="480" y="237" width="100" height="82"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="95" id="hDh-Ta-KM6"/>
-                                    <constraint firstAttribute="width" constant="105" id="uzz-Ez-Kbg"/>
+                                    <constraint firstAttribute="height" constant="82" id="5Uf-sr-eb1"/>
                                 </constraints>
                                 <state key="normal" image="jack">
                                     <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,7 +46,7 @@
                                 <rect key="frame" x="20" y="20" width="560" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="kyS-sa-EXQ"/>
+                                    <constraint firstAttribute="height" constant="100" id="2Bi-aU-CwC"/>
                                 </constraints>
                                 <string key="text">Click on a character to have Watson analyze that character's tone.
 
@@ -76,9 +56,10 @@ Tell Watson how your day is going, and he will analyze your tone, then match you
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKM-J5-ct2">
-                                <rect key="frame" x="168" y="171" width="71" height="90"/>
+                                <rect key="frame" x="20" y="128" width="100" height="82"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="71" id="alv-A3-WNt"/>
+                                    <constraint firstAttribute="width" constant="100" id="P1E-Wq-heS"/>
+                                    <constraint firstAttribute="height" constant="82" id="s1c-Ua-fFT"/>
                                 </constraints>
                                 <state key="normal" image="ron">
                                     <color key="titleColor" red="0.63585737179487178" green="0.63585737179487178" blue="0.63585737179487178" alpha="1" colorSpace="calibratedRGB"/>
@@ -89,7 +70,10 @@ Tell Watson how your day is going, and he will analyze your tone, then match you
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iP1-A7-Ji2">
-                                <rect key="frame" x="310" y="288" width="112" height="95"/>
+                                <rect key="frame" x="20" y="246" width="100" height="82"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="82" id="Rgx-R3-KyL"/>
+                                </constraints>
                                 <state key="normal" image="bond">
                                     <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -97,27 +81,94 @@ Tell Watson how your day is going, and he will analyze your tone, then match you
                                     <action selector="bondJamesBond:" destination="BYZ-38-t0r" eventType="touchUpInside" id="30g-SU-U9v"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DLx-Rs-BFM">
+                                <rect key="frame" x="20" y="507" width="87" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.62754407051282057" blue="0.032116427668821772" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="87" id="BCH-8u-uJK"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Start Talking">
+                                            <attributes>
+                                                <color key="NSColor" red="0.94511217950000004" green="0.94511217950000004" blue="0.94511217950000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="compareUserToCharacters:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sfg-fc-zzl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rpj-uq-oxA">
+                                <rect key="frame" x="244" y="507" width="112" height="30"/>
+                                <color key="backgroundColor" red="0.89969951924358971" green="0.88381369233071494" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Type a Message">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="typeManualMessage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BFp-DI-x8V"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGr-r8-HXy">
+                                <rect key="frame" x="228" y="476" width="145" height="30"/>
+                                <state key="normal" title="Analyze My Message"/>
+                                <connections>
+                                    <action selector="analyzeToneOfText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2k2-dO-ewB"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6J2-rg-JzJ">
+                                <rect key="frame" x="180" y="348" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.81996530450000005" green="0.81996530450000005" blue="0.81996530450000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="IFm-BS-Umg"/>
+                                    <constraint firstAttribute="height" constant="128" id="gSo-Ft-nbW"/>
+                                </constraints>
+                                <color key="textColor" red="0.0" green="0.2253411746" blue="0.36592548079999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" keyboardAppearance="alert"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DxG-8M-TGU">
+                                <rect key="frame" x="451" y="507" width="132" height="30"/>
+                                <state key="normal" title="Send me the Code!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="CAc-Qq-8HO" kind="show" id="nL2-GE-es1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.22534117459895406" blue="0.36592548076923082" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="0pe-Dp-4WW"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="62C-wK-ikf"/>
-                            <constraint firstItem="SKM-J5-ct2" firstAttribute="centerY" secondItem="m66-ei-5Nh" secondAttribute="centerY" id="7Ud-B2-PZM"/>
-                            <constraint firstItem="SKM-J5-ct2" firstAttribute="centerX" secondItem="IVb-cu-pOn" secondAttribute="centerX" id="D4u-fd-0cA"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="centerX" secondItem="E7u-Ij-urx" secondAttribute="centerX" id="H58-2b-NMa"/>
-                            <constraint firstItem="iP1-A7-Ji2" firstAttribute="leading" secondItem="IVb-cu-pOn" secondAttribute="trailing" constant="54" id="HBQ-xh-SfQ"/>
-                            <constraint firstItem="iP1-A7-Ji2" firstAttribute="top" secondItem="m66-ei-5Nh" secondAttribute="bottom" constant="34" id="O6j-6r-lAu"/>
-                            <constraint firstItem="m66-ei-5Nh" firstAttribute="leading" secondItem="SKM-J5-ct2" secondAttribute="trailing" constant="83" id="OGK-J0-QrM"/>
-                            <constraint firstItem="iP1-A7-Ji2" firstAttribute="trailing" secondItem="E7u-Ij-urx" secondAttribute="trailing" id="ON2-ee-xps"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="E7u-Ij-urx" secondAttribute="bottom" constant="67" id="Peb-SE-1AB"/>
-                            <constraint firstItem="m66-ei-5Nh" firstAttribute="trailing" secondItem="iP1-A7-Ji2" secondAttribute="trailing" id="ary-KP-uS2"/>
-                            <constraint firstItem="IVb-cu-pOn" firstAttribute="top" secondItem="iP1-A7-Ji2" secondAttribute="top" id="gUb-O2-WiO"/>
-                            <constraint firstItem="IVb-cu-pOn" firstAttribute="top" secondItem="SKM-J5-ct2" secondAttribute="bottom" constant="27" id="j7D-Ra-bNe"/>
-                            <constraint firstItem="SKM-J5-ct2" firstAttribute="top" secondItem="KFG-3t-gha" secondAttribute="bottom" constant="51" id="naf-ht-2Qh"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="rET-O9-5ea"/>
-                            <constraint firstItem="IVb-cu-pOn" firstAttribute="bottom" secondItem="iP1-A7-Ji2" secondAttribute="bottom" id="zQ8-ae-yCR"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="0MS-UX-7u3"/>
+                            <constraint firstItem="IVb-cu-pOn" firstAttribute="top" secondItem="m66-ei-5Nh" secondAttribute="bottom" constant="27" id="2Na-Da-L4e"/>
+                            <constraint firstItem="SKM-J5-ct2" firstAttribute="trailing" secondItem="iP1-A7-Ji2" secondAttribute="trailing" id="7wR-ok-nuh"/>
+                            <constraint firstItem="SKM-J5-ct2" firstAttribute="leading" secondItem="iP1-A7-Ji2" secondAttribute="leading" id="8dQ-HV-Dwf"/>
+                            <constraint firstItem="m66-ei-5Nh" firstAttribute="trailing" secondItem="IVb-cu-pOn" secondAttribute="trailing" id="Dxp-m7-3PI"/>
+                            <constraint firstItem="m66-ei-5Nh" firstAttribute="leading" secondItem="IVb-cu-pOn" secondAttribute="leading" id="Fcp-Xi-nup"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Gj6-ru-3Zj"/>
+                            <constraint firstItem="iP1-A7-Ji2" firstAttribute="top" secondItem="SKM-J5-ct2" secondAttribute="bottom" constant="36" id="Hv4-54-x1b"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DLx-Rs-BFM" secondAttribute="bottom" constant="63" id="KxH-GP-fUw"/>
+                            <constraint firstItem="SKM-J5-ct2" firstAttribute="bottom" secondItem="m66-ei-5Nh" secondAttribute="bottom" id="NUD-CC-X30"/>
+                            <constraint firstItem="SKM-J5-ct2" firstAttribute="top" secondItem="m66-ei-5Nh" secondAttribute="top" id="Qbf-ki-abS"/>
+                            <constraint firstItem="Rpj-uq-oxA" firstAttribute="top" secondItem="bGr-r8-HXy" secondAttribute="bottom" constant="1" id="V21-HK-kbs"/>
+                            <constraint firstItem="bGr-r8-HXy" firstAttribute="top" secondItem="6J2-rg-JzJ" secondAttribute="bottom" id="VcQ-1u-1mE"/>
+                            <constraint firstItem="bGr-r8-HXy" firstAttribute="centerX" secondItem="Rpj-uq-oxA" secondAttribute="centerX" id="Vtm-Jh-yBe"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="leading" secondItem="SKM-J5-ct2" secondAttribute="leading" id="WU0-kT-ywS"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="bBP-ZL-eMg"/>
+                            <constraint firstItem="SKM-J5-ct2" firstAttribute="top" secondItem="KFG-3t-gha" secondAttribute="bottom" constant="8" symbolic="YES" id="gdT-Z2-jvF"/>
+                            <constraint firstItem="iP1-A7-Ji2" firstAttribute="leading" secondItem="DLx-Rs-BFM" secondAttribute="leading" id="hkY-pc-Nqe"/>
+                            <constraint firstItem="6J2-rg-JzJ" firstAttribute="centerX" secondItem="bGr-r8-HXy" secondAttribute="centerX" id="neo-MV-hYC"/>
+                            <constraint firstItem="DLx-Rs-BFM" firstAttribute="top" secondItem="Rpj-uq-oxA" secondAttribute="top" id="tjU-Og-IdW"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="centerX" secondItem="6J2-rg-JzJ" secondAttribute="centerX" id="voY-mr-uUK"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="trailing" secondItem="m66-ei-5Nh" secondAttribute="trailing" id="w9S-FV-nXe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="sendTextButton" destination="bGr-r8-HXy" id="8sH-Bq-fbx"/>
+                        <outlet property="textField" destination="6J2-rg-JzJ" id="VoD-jv-frG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

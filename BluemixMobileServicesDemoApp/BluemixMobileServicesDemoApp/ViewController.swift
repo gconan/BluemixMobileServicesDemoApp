@@ -10,8 +10,20 @@ import UIKit
 import ToneAnalyzerV3
 import SpeechToTextV1
 import SwiftyJSON
+import BMSCore
+import BMSAnalytics
 
 class ViewController: UIViewController {
+    
+    private let blueLogger: Logger = Logger.logger(forName: "DemoAppViewController")
+    
+    @IBOutlet weak var sendTextButton: UIButton!
+    
+    @IBOutlet weak var textField: UITextView!
+    
+    private var customUserCount: Int = 0
+    
+    private let jsonString: String = "{\"_id\": \"personality3\",\"Person\":\"JamesBond\",\"document_tone\": {\"tone_categories\": [{\"tones\": [{\"score\": 0.328916,\"tone_id\": \"anger\",\"tone_name\": \"Anger\"},{\"score\": 0.781419,\"tone_id\": \"disgust\",\"tone_name\": \"Disgust\"},{\"score\": 0.100935,\"tone_id\": \"fear\",\"tone_name\": \"Fear\"},{\"score\": 0.022298,\"tone_id\": \"joy\",\"tone_name\": \"Joy\"},{\"score\": 0.306449,\"tone_id\": \"sadness\",\"tone_name\": \"Sadness\"}],\"category_id\": \"emotion_tone\",\"category_name\": \"Emotion Tone\"},{\"tones\": [{\"score\": 0,\"tone_id\": \"analytical\",\"tone_name\": \"Analytical\"},{\"score\": 0,\"tone_id\": \"confident\",\"tone_name\": \"Confident\"},{\"score\": 0.831,\"tone_id\": \"tentative\",\"tone_name\": \"Tentative\"}],\"category_id\": \"language_tone\",\"category_name\": \"Language Tone\"},{\"tones\": [{\"score\": 0.071,\"tone_id\": \"openness_big5\",\"tone_name\": \"Openness\"},{\"score\": 0.017,\"tone_id\": \"conscientiousness_big5\",\"tone_name\": \"Conscientiousness\"},{\"score\": 0.966,\"tone_id\": \"extraversion_big5\",\"tone_name\": \"Extraversion\"},{\"score\": 0.558,\"tone_id\": \"agreeableness_big5\",\"tone_name\": \"Agreeableness\"},{\"score\": 0.62,\"tone_id\": \"emotional_range_big5\",\"tone_name\": \"Emotional Range\"}],\"category_id\": \"social_tone\",\"category_name\": \"Social Tone\"}]}}"
     
     var AverageScores: [MovieCharacter: ToneScore] = [:]
     
@@ -44,6 +56,46 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let dataFromString = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+            let json = JSON(data: dataFromString)
+            //print(json["Person"])
+            //print(json["document_tone"]["tone_categories"])
+        
+        
+        let categories = json["document_tone"]["tone_categories"]
+        
+                for (index,tone):(String, JSON) in categories{
+                    let id = tone["category_id"]
+                    print("ID: \(id)")
+                    print("Index: \(index)")
+                    print("Tone: \(tone)")
+//                    if id == Emotions.tone.rawValue{
+//        
+//                    }
+                }
+        
+        }
+        
+        customUserCount = 0
+        
+        BMSClient.sharedInstance.initializeWithBluemixAppRoute(nil, bluemixAppGUID: nil, bluemixRegion:".stage1.ng.bluemix.net") //You can change the region
+        Analytics.initializeWithAppName("BluemixMovileServicesDemoApp", apiKey: "2baf6285-258a-48dc-9009-92036ee4a89c", deviceEvents: DeviceEvent.LIFECYCLE)
+
+        
+        sendTextButton.hidden = true
+        textField.hidden = true
+        
+        let username = "ef9ec932-f667-4c95-ad59-abee1c31b7cb"
+        let password = "UeT1J8F2oN3N"
+        let version = "2016-05-10" // use today's date for the most recent version
+        let toneAnalyzer = ToneAnalyzer(username: username, password: password, version: version)
+        
+        let text = "I don't stop when I'm tired, I stop when I'm done"
+        let failure = { (error: NSError) in print("SOME ERROR: \(error)") }
+        toneAnalyzer.getTone(text, failure: failure) { tones in
+            print(tones)
+        }
+        
         self.AverageScores[MovieCharacter.RonBurgandy] = ToneScore()
         self.AverageScores[MovieCharacter.DarthVader] = ToneScore()
         self.AverageScores[MovieCharacter.JackSparrow] = ToneScore()
@@ -51,25 +103,36 @@ class ViewController: UIViewController {
         
         for s:String in RonB_Quotes{
             let rawScore:JSON = []//get real tone analysis
-            self.addScoreToAverage(rawScore, character: MovieCharacter.RonBurgandy)
+            self.AverageScores[MovieCharacter.RonBurgandy]?.addToAverage(rawScore)
         }
         
         for s:String in DarthV_Quotes{
             let rawScore:JSON = []//get real tone analysis
-            self.addScoreToAverage(rawScore, character: MovieCharacter.DarthVader)
+            self.AverageScores[MovieCharacter.DarthVader]?.addToAverage(rawScore)
         }
         
         for s:String in JackS_Quotes{
             let rawScore:JSON = []//get real tone analysis
-            self.addScoreToAverage(rawScore, character: MovieCharacter.JackSparrow)
+            self.AverageScores[MovieCharacter.JackSparrow]?.addToAverage(rawScore)
         }
         
         for s:String in JamesB_Quotes{
             let rawScore:JSON = []//get real tone analysis
-            self.addScoreToAverage(rawScore, character: MovieCharacter.JamesBond)
+            self.AverageScores[MovieCharacter.JamesBond]?.addToAverage(rawScore)
         }
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         
+
+        Analytics.enabled = true
+        Logger.logStoreEnabled = true
+    }
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,45 +140,74 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func ronBurgandy(sender: AnyObject) {
-
-    }
-    
-    @IBAction func darthVader(sender: AnyObject) {
+        //upload to cloudant
+        //https://$USERNAME.cloudant.com/$DATABASE
+        blueLogger.info("Ron Burgandy")
         
     }
     
+    @IBAction func darthVader(sender: AnyObject) {
+        //upload to cloudant
+        blueLogger.info("Darth Vader")
+         
+    }
+    
     @IBAction func jackSparrow(sender: AnyObject) {
+        //upload to cloudant
+        blueLogger.info("Jack Sparrow")
         
     }
     
     @IBAction func bondJamesBond(sender: AnyObject) {
+        //upload to cloudant
+        let logger = Logger.logger(forName: "BondLogger")
+        logger.info("James Bond")
         
     }
     
     @IBAction func compareUserToCharacters(sender: AnyObject) {
         
-        let username = "your-username-here"
-        let password = "your-password-here"
+        let username = "3e93abac-f01d-44e2-81a4-04bc2fbcbc23"
+        let password = "ngmjfHMNKPEW"
         let speechToText = SpeechToText(username: username, password: password)
         
         // define transcription settings
         var settings = TranscriptionSettings(contentType: .L16(rate: 44100, channels: 1))
-        settings.continuous = true
-        settings.interimResults = true
+        settings.continuous = false
+        settings.interimResults = false
         
         // start streaming audio and print transcripts
         let failure = { (error: NSError) in print(error) }
         let stopStreaming = speechToText.transcribe(settings, failure: failure) { results in
-            print(results.last?.alternatives.last?.transcript)
+            //if results.last?.final == true {
+                print(results.last?.alternatives.last?.transcript)
+            //}
         }
         
-        
-        // Streaming will continue until either an end-of-speech event is detected by
-        // the Speech to Text service or the `stopStreaming` function is executed.
+        customUserCount = customUserCount + 1
         
     }
-    
-    private func addScoreToAverage(rawJSON:JSON, character:MovieCharacter){
+    @IBAction func doneSpeaking(sender: AnyObject) {
+        Logger.send()
+        Analytics.send()
+    }
+    @IBAction func typeManualMessage(sender: AnyObject) {
         
+        textField.hidden = !textField.hidden
+        sendTextButton.hidden = !sendTextButton.hidden
+    }
+    @IBAction func analyzeToneOfText(sender: AnyObject) {
+        
+        let username = "ef9ec932-f667-4c95-ad59-abee1c31b7cb"
+        let password = "UeT1J8F2oN3N"
+        let version = "2016-07-14" // use today's date for the most recent version
+        let toneAnalyzer = ToneAnalyzer(username: username, password: password, version: version)
+        
+        let text = textField.text
+        let failure = { (error: NSError) in print(error) }
+        toneAnalyzer.getTone(text, failure: failure) { tones in
+            print(tones)
+        }
+        customUserCount = customUserCount + 1
     }
 }
