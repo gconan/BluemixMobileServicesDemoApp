@@ -10,6 +10,7 @@ import Foundation
 import SwiftyJSON
 import BMSCore
 
+
 public class ToneScore{
     private var emotionScore: [Emotions:Double] = [:]
     private var socialScore: [Social:Double] = [:]
@@ -154,29 +155,91 @@ public class ToneScore{
         self.runningLanguageScore[Language.Tentative] = self.runningLanguageScore[Language.Tentative]! + tentScore
     }
 
-    public func getEmotionAverage() -> [Emotions:Double]{
+    private func calculateEmotionAverage() -> [Emotions:Double]{
         for e:Emotions in self.EmotionList{
             self.emotionScore[e] = self.runningEmotionScore[e]!/self.count
         }
         return self.emotionScore
     }
     
-    public func getLanguageAverage() -> [Language:Double]{
+    private func calculateLanguageAverage() -> [Language:Double]{
         for l:Language in self.LanguageList{
             self.languageScore[l] = self.runningLanguageScore[l]!/self.count
         }
         return self.languageScore
     }
 
-    public func getSocialAverage() -> [Social:Double]{
+    private func calculateSocialAverage() -> [Social:Double]{
         for s:Social in self.SocialList{
             self.socialScore[s] = self.runningSocialScore[s]!/self.count
         }
         return self.socialScore
     }
+    
+    public func toJSON()->JSON{
+        var result: JSON = [:]
+        result["document_tone"] = [:]
+        
+        var categoryArray: [JSON] = [JSON]()
+        
+        //EMOTIONS
+        var emotions: JSON = [:]
+        var emotionTones: [JSON] = [JSON]()
+        self.calculateEmotionAverage()
+        for e:Emotions in self.EmotionList{
+            var tone: JSON = [:]
+            tone["score"] = JSON(self.emotionScore[e]!)
+            tone["tone_id"] = JSON(e.rawValue)
+            tone["tone_name"] = JSON(e.toUpperCaseName())
+            emotionTones.append(tone)
+        }
+        emotions["category_id"] = "emotion_tone"
+        emotions["category_name"] = "Emotion Tone"
+        emotions["tones"] = JSON(emotionTones)
+        
+        //SOCIAL
+        var social: JSON = [:]
+        var socialTones: [JSON] = [JSON]()
+        self.calculateSocialAverage()
+        for s:Social in self.SocialList{
+            var tone: JSON = [:]
+            tone["score"] = JSON(self.socialScore[s]!)
+            tone["tone_id"] = JSON(s.rawValue)
+            tone["tone_name"] = JSON(s.toUpperCaseName())
+            socialTones.append(tone)
+        }
+        social["category_id"] = "social_tone"
+        social["category_name"] = "Social Tone"
+        social["tones"] = JSON(socialTones)
+        
+        
+        //Language
+        var lang: JSON = [:]
+        var langTones: [JSON] = [JSON]()
+        self.calculateLanguageAverage()
+        for l:Language in self.LanguageList{
+            var tone: JSON = [:]
+            tone["score"] = JSON(self.languageScore[l]!)
+            tone["tone_id"] = JSON(l.rawValue)
+            tone["tone_name"] = JSON(l.toUpperCaseName())
+            langTones.append(tone)
+        }
+        lang["category_id"] = "language_tone"
+        lang["category_name"] = "Language Tone"
+        lang["tones"] = JSON(langTones)
+        
+        
+        categoryArray.append(emotions)
+        categoryArray.append(social)
+        categoryArray.append(lang)
+        
+        result["document_tone"]["tone_categories"] = JSON(categoryArray)
+        return result
+    }
 
    public enum Emotions:String{
         case tone = "emotion_tone"
+        case name = "Emotion Tone"
         case Anger = "anger"
         case Disgust = "disgust"
         case Fear = "fear"
@@ -186,6 +249,7 @@ public class ToneScore{
     
     public enum Language:String{
         case tone = "language_tone"
+        case name = "Language Tone"
         case Analytical = "analytical"
         case Confident = "confident"
         case Tentative = "tentative"
@@ -193,10 +257,62 @@ public class ToneScore{
     
     public enum Social:String{
         case tone = "social_tone"
+        case name = "Social Tone"
         case Openness = "openness"
         case Conscientiousness = "conscientiousness"
         case Extraversion = "extraversion"
         case Agreeableness = "agreeableness"
     }    
     
+}
+
+extension ToneScore.Emotions{
+    func toUpperCaseName()->String{
+        switch (self){
+        case ToneScore.Emotions.Anger:
+            return "Anger"
+        case ToneScore.Emotions.Disgust:
+            return "Disgust"
+        case ToneScore.Emotions.Fear:
+            return "Fear"
+        case ToneScore.Emotions.Joy:
+            return "Joy"
+        case ToneScore.Emotions.Sadness:
+            return "Sadness"
+        default:
+            return""
+        }
+    }
+}
+
+extension ToneScore.Social{
+    func toUpperCaseName()->String{
+        switch (self){
+        case ToneScore.Social.Openness:
+            return "Openness"
+        case ToneScore.Social.Conscientiousness:
+            return "Conscientiousness"
+        case ToneScore.Social.Extraversion:
+            return "Extraversion"
+        case ToneScore.Social.Agreeableness:
+            return "Agreeableness"
+        default:
+            return""
+        }
+    }
+}
+
+extension ToneScore.Language{
+    func toUpperCaseName()->String{
+        switch (self){
+        case ToneScore.Language.Analytical:
+            return "Analytical"
+        case ToneScore.Language.Confident:
+            return"Confident"
+        case ToneScore.Language.Tentative:
+            return"Tentative"
+        default:
+            return""
+        }
+    }
 }

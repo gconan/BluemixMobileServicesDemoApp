@@ -14,6 +14,8 @@ import BMSCore
 import BMSAnalytics
 
 class ViewController: UIViewController {
+    private let jsonString: String = "{\"Person\":\"CONAN\",\"document_tone\": {\"tone_categories\": [{\"tones\": [{\"score\": 0.328916,\"tone_id\": \"anger\",\"tone_name\": \"Anger\"},{\"score\": 0.781419,\"tone_id\": \"disgust\",\"tone_name\": \"Disgust\"},{\"score\": 0.100935,\"tone_id\": \"fear\",\"tone_name\": \"Fear\"},{\"score\": 0.022298,\"tone_id\": \"joy\",\"tone_name\": \"Joy\"},{\"score\": 0.306449,\"tone_id\": \"sadness\",\"tone_name\": \"Sadness\"}],\"category_id\": \"emotion_tone\",\"category_name\": \"Emotion Tone\"},{\"tones\": [{\"score\": 0,\"tone_id\": \"analytical\",\"tone_name\": \"Analytical\"},{\"score\": 0,\"tone_id\": \"confident\",\"tone_name\": \"Confident\"},{\"score\": 0.831,\"tone_id\": \"tentative\",\"tone_name\": \"Tentative\"}],\"category_id\": \"language_tone\",\"category_name\": \"Language Tone\"},{\"tones\": [{\"score\": 0.071,\"tone_id\": \"openness_big5\",\"tone_name\": \"Openness\"},{\"score\": 0.017,\"tone_id\": \"conscientiousness_big5\",\"tone_name\": \"Conscientiousness\"},{\"score\": 0.966,\"tone_id\": \"extraversion_big5\",\"tone_name\": \"Extraversion\"},{\"score\": 0.558,\"tone_id\": \"agreeableness_big5\",\"tone_name\": \"Agreeableness\"},{\"score\": 0.62,\"tone_id\": \"emotional_range_big5\",\"tone_name\": \"Emotional Range\"}],\"category_id\": \"social_tone\",\"category_name\": \"Social Tone\"}]}}"
+
     
     private let blueLogger: Logger = Logger.logger(forName: "DemoAppViewController")
     
@@ -22,23 +24,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var textField: UITextView!
     
     private var customUserCount: Int = 0
-    
-    private let jsonString: String = "{\"_id\": \"personality3\",\"Person\":\"JamesBond\",\"document_tone\": {\"tone_categories\": [{\"tones\": [{\"score\": 0.328916,\"tone_id\": \"anger\",\"tone_name\": \"Anger\"},{\"score\": 0.781419,\"tone_id\": \"disgust\",\"tone_name\": \"Disgust\"},{\"score\": 0.100935,\"tone_id\": \"fear\",\"tone_name\": \"Fear\"},{\"score\": 0.022298,\"tone_id\": \"joy\",\"tone_name\": \"Joy\"},{\"score\": 0.306449,\"tone_id\": \"sadness\",\"tone_name\": \"Sadness\"}],\"category_id\": \"emotion_tone\",\"category_name\": \"Emotion Tone\"},{\"tones\": [{\"score\": 0,\"tone_id\": \"analytical\",\"tone_name\": \"Analytical\"},{\"score\": 0,\"tone_id\": \"confident\",\"tone_name\": \"Confident\"},{\"score\": 0.831,\"tone_id\": \"tentative\",\"tone_name\": \"Tentative\"}],\"category_id\": \"language_tone\",\"category_name\": \"Language Tone\"},{\"tones\": [{\"score\": 0.071,\"tone_id\": \"openness_big5\",\"tone_name\": \"Openness\"},{\"score\": 0.017,\"tone_id\": \"conscientiousness_big5\",\"tone_name\": \"Conscientiousness\"},{\"score\": 0.966,\"tone_id\": \"extraversion_big5\",\"tone_name\": \"Extraversion\"},{\"score\": 0.558,\"tone_id\": \"agreeableness_big5\",\"tone_name\": \"Agreeableness\"},{\"score\": 0.62,\"tone_id\": \"emotional_range_big5\",\"tone_name\": \"Emotional Range\"}],\"category_id\": \"social_tone\",\"category_name\": \"Social Tone\"}]}}"
+
+    private let toneAnalyzer = ToneAnalyzer(username: "ef9ec932-f667-4c95-ad59-abee1c31b7cb", password: "UeT1J8F2oN3N", version: "2016-05-10", serviceURL: "https://gateway.watsonplatform.net/tone-analyzer/api")
     
     var AverageScores: [MovieCharacter: ToneScore] = [:]
     
-    //JSON parsing helpers
-    let Score = "score"
-    let Document = "document_tone"
-    let ToneCategories = "tone_categories"
-    let Tones = "tones"
-    
     //Characters
-    enum MovieCharacter{
-        case RonBurgandy
-        case DarthVader
-        case JackSparrow
-        case JamesBond
+    enum MovieCharacter:String{
+        case RonBurgandy = "Ron Burgandy"
+        case DarthVader = "Darth Vader"
+        case JackSparrow = "Jack Sparrow"
+        case JamesBond = "James Bond"
     }
     
     
@@ -51,31 +47,11 @@ class ViewController: UIViewController {
     
     let JamesB_Quotes: [String] = ["I don't stop when I'm tired, I stop when I'm done","It takes a certain kind of woman to wear a backless dress and a gun strapped to her thigh", "A Martini. Shaken, not stirred", "Be polite, be courteous, show professionalism, and have a plan to kill everyone in the room", "Killing and dying, it's all a matter of perspective", "My name is Bond, James Bond", "I don’t know, I’ve never lost.", "My dear girl, there are some things that just aren’t done. Such as, drinking Dom Perignon ’53 above the temperature of 38 degrees Fahrenheit. That’s just as bad as listening to the Beatles without earmuffs."]
     
+    let Dory_Quotes: [String] = []
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let dataFromString = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
-            let json = JSON(data: dataFromString)
-            //print(json["Person"])
-            //print(json["document_tone"]["tone_categories"])
-        
-        
-        let categories = json["document_tone"]["tone_categories"]
-        
-                for (index,tone):(String, JSON) in categories{
-                    let id = tone["category_id"]
-                    print("ID: \(id)")
-                    print("Index: \(index)")
-                    print("Tone: \(tone)")
-//                    if id == Emotions.tone.rawValue{
-//        
-//                    }
-                }
-        
-        }
-        
         customUserCount = 0
         
         BMSClient.sharedInstance.initializeWithBluemixAppRoute(nil, bluemixAppGUID: nil, bluemixRegion:".stage1.ng.bluemix.net") //You can change the region
@@ -85,40 +61,37 @@ class ViewController: UIViewController {
         sendTextButton.hidden = true
         textField.hidden = true
         
-        let username = "ef9ec932-f667-4c95-ad59-abee1c31b7cb"
-        let password = "UeT1J8F2oN3N"
-        let version = "2016-05-10" // use today's date for the most recent version
-        let toneAnalyzer = ToneAnalyzer(username: username, password: password, version: version)
-        
-        let text = "I don't stop when I'm tired, I stop when I'm done"
-        let failure = { (error: NSError) in print("SOME ERROR: \(error)") }
-        toneAnalyzer.getTone(text, failure: failure) { tones in
-            print(tones)
-        }
-        
         self.AverageScores[MovieCharacter.RonBurgandy] = ToneScore()
         self.AverageScores[MovieCharacter.DarthVader] = ToneScore()
         self.AverageScores[MovieCharacter.JackSparrow] = ToneScore()
         self.AverageScores[MovieCharacter.JamesBond] = ToneScore()
         
         for s:String in RonB_Quotes{
-            let rawScore:JSON = []//get real tone analysis
-            self.AverageScores[MovieCharacter.RonBurgandy]?.addToAverage(rawScore)
+            let failure = { (error: NSError) in print("SOME ERROR: \(error)") }
+            toneAnalyzer.getTone(s, failure: failure) { tones in
+                self.AverageScores[MovieCharacter.RonBurgandy]?.addToAverage(tones.convertToSwiftyJSON())
+            }
         }
         
         for s:String in DarthV_Quotes{
-            let rawScore:JSON = []//get real tone analysis
-            self.AverageScores[MovieCharacter.DarthVader]?.addToAverage(rawScore)
+            let failure = { (error: NSError) in print("SOME ERROR: \(error)") }
+            toneAnalyzer.getTone(s, failure: failure) { tones in
+                self.AverageScores[MovieCharacter.DarthVader]?.addToAverage(tones.convertToSwiftyJSON())
+            }
         }
         
         for s:String in JackS_Quotes{
-            let rawScore:JSON = []//get real tone analysis
-            self.AverageScores[MovieCharacter.JackSparrow]?.addToAverage(rawScore)
+            let failure = { (error: NSError) in print("SOME ERROR: \(error)") }
+            toneAnalyzer.getTone(s, failure: failure) { tones in
+                self.AverageScores[MovieCharacter.JackSparrow]?.addToAverage(tones.convertToSwiftyJSON())
+            }
         }
         
         for s:String in JamesB_Quotes{
-            let rawScore:JSON = []//get real tone analysis
-            self.AverageScores[MovieCharacter.JamesBond]?.addToAverage(rawScore)
+            let failure = { (error: NSError) in print("SOME ERROR: \(error)") }
+            toneAnalyzer.getTone(s, failure: failure) { tones in
+                self.AverageScores[MovieCharacter.JamesBond]?.addToAverage(tones.convertToSwiftyJSON())
+            }
         }
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
@@ -140,29 +113,48 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func ronBurgandy(sender: AnyObject) {
-        //upload to cloudant
-        //https://$USERNAME.cloudant.com/$DATABASE
         blueLogger.info("Ron Burgandy")
         
+        let request = Request(url: "https://756b57dd-f7bb-4721-adeb-9e7f45c99497-bluemix.cloudant.com/personality_insights/", method: HttpMethod.POST)
+        request.headers = ["Content-Type":"application/json"]
+        
+        var ronJSON = AverageScores[MovieCharacter.RonBurgandy]!.toJSON()
+        ronJSON["Person"] = JSON(MovieCharacter.RonBurgandy.rawValue)
+        if let ronJSONstring = ronJSON.rawString(){
+            request.sendString(ronJSONstring, completionHandler:nil)
+        }else{
+            blueLogger.warn("Unable to convert Ron's ToneScore into a String")
+        }
+        Logger.send()
+        Analytics.send()
     }
     
     @IBAction func darthVader(sender: AnyObject) {
-        //upload to cloudant
         blueLogger.info("Darth Vader")
-         
+        
+        //upload to cloudant
+        
+        Logger.send()
+        Analytics.send()
     }
     
     @IBAction func jackSparrow(sender: AnyObject) {
-        //upload to cloudant
         blueLogger.info("Jack Sparrow")
         
+        //upload to cloudant
+        
+        Logger.send()
+        Analytics.send()
     }
     
     @IBAction func bondJamesBond(sender: AnyObject) {
-        //upload to cloudant
         let logger = Logger.logger(forName: "BondLogger")
         logger.info("James Bond")
         
+        //upload to cloudant
+
+        Logger.send()
+        Analytics.send()
     }
     
     @IBAction func compareUserToCharacters(sender: AnyObject) {
@@ -179,18 +171,19 @@ class ViewController: UIViewController {
         // start streaming audio and print transcripts
         let failure = { (error: NSError) in print(error) }
         let stopStreaming = speechToText.transcribe(settings, failure: failure) { results in
-            //if results.last?.final == true {
-                print(results.last?.alternatives.last?.transcript)
-            //}
+            let failure = { (error: NSError) in print("\(error)") }
+            let speech = results.last?.alternatives.last?.transcript
+            self.toneAnalyzer.getTone(speech!, failure: failure) { tones in
+                var payload:JSON = tones.convertToSwiftyJSON()
+                payload["Person"] = JSON("User \(self.customUserCount)")
+                //save to cloudant
+            }
         }
         
         customUserCount = customUserCount + 1
         
     }
-    @IBAction func doneSpeaking(sender: AnyObject) {
-        Logger.send()
-        Analytics.send()
-    }
+    
     @IBAction func typeManualMessage(sender: AnyObject) {
         
         textField.hidden = !textField.hidden
@@ -198,15 +191,17 @@ class ViewController: UIViewController {
     }
     @IBAction func analyzeToneOfText(sender: AnyObject) {
         
-        let username = "ef9ec932-f667-4c95-ad59-abee1c31b7cb"
-        let password = "UeT1J8F2oN3N"
-        let version = "2016-07-14" // use today's date for the most recent version
-        let toneAnalyzer = ToneAnalyzer(username: username, password: password, version: version)
+//        let username = "ef9ec932-f667-4c95-ad59-abee1c31b7cb"
+//        let password = "UeT1J8F2oN3N"
+//        let version = "2016-07-14" // use today's date for the most recent version
+//        let toneAnalyzer = ToneAnalyzer(username: username, password: password, version: version)
         
         let text = textField.text
         let failure = { (error: NSError) in print(error) }
-        toneAnalyzer.getTone(text, failure: failure) { tones in
-            print(tones)
+        self.toneAnalyzer.getTone(text, failure: failure) { tones in
+            var payload:JSON = tones.convertToSwiftyJSON()
+            payload["Person"] = JSON("User \(self.customUserCount)")
+            //save to cloudant
         }
         customUserCount = customUserCount + 1
     }
