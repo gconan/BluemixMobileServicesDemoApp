@@ -67,6 +67,7 @@ class ViewController: UIViewController {
         self.AverageScores[MovieCharacter.DarthVader] = ToneScore()
         self.AverageScores[MovieCharacter.JackSparrow] = ToneScore()
         self.AverageScores[MovieCharacter.JamesBond] = ToneScore()
+        self.AverageScores[MovieCharacter.Dory] = ToneScore()
         
         //get tone score for all Ron quotes
         for s:String in RonB_Quotes{

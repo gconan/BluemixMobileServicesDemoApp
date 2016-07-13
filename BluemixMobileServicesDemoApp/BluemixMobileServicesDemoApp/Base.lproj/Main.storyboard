@@ -206,10 +206,10 @@ Tell Watson how your day is going, and he will analyze your tone, then match you
             </objects>
             <point key="canvasLocation" x="257" y="304"/>
         </scene>
-        <!--View Controller-->
+        <!--Email Links Controller-->
         <scene sceneID="2Yu-UP-5gC">
             <objects>
-                <viewController id="CAc-Qq-8HO" sceneMemberID="viewController">
+                <viewController id="CAc-Qq-8HO" customClass="EmailLinksController" customModule="BluemixMobileServicesDemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iY9-ZC-IRQ"/>
                         <viewControllerLayoutGuide type="bottom" id="QBm-uf-BR6"/>
@@ -237,6 +237,9 @@ Tell Watson how your day is going, and he will analyze your tone, then match you
                                 <state key="normal" title="Send My Email Without Saving My Address">
                                     <color key="titleColor" red="0.0" green="0.2253411746" blue="0.36592548079999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendEmail:" destination="CAc-Qq-8HO" eventType="touchUpInside" id="9lN-Gx-Iq8"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Email Address" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N1q-fb-HDO">
                                 <rect key="frame" x="204" y="196" width="192" height="30"/>
