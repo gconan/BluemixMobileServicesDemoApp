@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         case DarthVader = "Darth Vader"
         case JackSparrow = "Jack Sparrow"
         case JamesBond = "James Bond"
+        case Dory = "Dory"
     }
     
     
@@ -43,7 +44,7 @@ class ViewController: UIViewController {
     
     let JamesB_Quotes: [String] = ["I don't stop when I'm tired, I stop when I'm done","It takes a certain kind of woman to wear a backless dress and a gun strapped to her thigh", "A Martini. Shaken, not stirred", "Be polite, be courteous, show professionalism, and have a plan to kill everyone in the room", "Killing and dying, it's all a matter of perspective", "My name is Bond, James Bond", "I don’t know, I’ve never lost.", "My dear girl, there are some things that just aren’t done. Such as, drinking Dom Perignon ’53 above the temperature of 38 degrees Fahrenheit. That’s just as bad as listening to the Beatles without earmuffs."]
     
-    let Dory_Quotes: [String] = []
+    let Dory_Quotes: [String] = ["Trust, it's what friends do!","The sea monkeys have my money...Yes, I'm a natural blue", "I shall call him squishy and he will be mine and he shall be my squishy", "Wow, I wish I could speak whale", "Hey there, Mr. Grumpy Gills. When life gets you down, just keep swimming, just keep swimming, swimming, swimming.", "Yeah, be careful I don't make you cry when I win!", "Would you quit it? What, the ocean isn't big enough for you or something like that? You got a problem? Huh? Do ya, do ya, do ya? You wanna piece of me? Yeah, yeah! Ooh, I'm scared now! What?", "This is the Ocean, silly, we're not the only two in here. ","Hey, look, balloons. It is a party.","I don't know. But who cares! Ha ha! I remembered!"]
     
 
     override func viewDidLoad() {
@@ -96,6 +97,14 @@ class ViewController: UIViewController {
             let failure = { (error: NSError) in print("SOME ERROR: \(error)") }
             toneAnalyzer.getTone(s, failure: failure) { tones in
                 self.AverageScores[MovieCharacter.JamesBond]?.addToAverage(tones.convertToSwiftyJSON())
+            }
+        }
+        
+        //get tone score for all Dory quotes
+        for s:String in Dory_Quotes{
+            let failure = { (error: NSError) in print("SOME ERROR: \(error)") }
+            toneAnalyzer.getTone(s, failure: failure) { tones in
+                self.AverageScores[MovieCharacter.Dory]?.addToAverage(tones.convertToSwiftyJSON())
             }
         }
         
@@ -189,8 +198,7 @@ class ViewController: UIViewController {
     
     @IBAction func bondJamesBond(sender: AnyObject) {
         //log to analytics, can use to count number of times the button is clicked
-        let logger = Logger.logger(forName: "BondLogger")
-        logger.info("James Bond")
+        blueLogger.info("James Bond")
         
         //build a request with BMSCore
         let request = Request(url: cloudantURL, method: HttpMethod.POST)
@@ -208,6 +216,30 @@ class ViewController: UIViewController {
             blueLogger.warn("Unable to convert James' ToneScore into a String")
         }
 
+        Logger.send()
+        Analytics.send()
+    }
+    
+    @IBAction func dory(sender: AnyObject) {
+        //log to analytics, can use to count number of times the button is clicked
+        blueLogger.info("Dory Fish")
+        
+        //build a request with BMSCore
+        let request = Request(url: cloudantURL, method: HttpMethod.POST)
+        request.headers = ["Content-Type":"application/json"]
+        
+        //get the average as a JSON object and add character name
+        var doryJSON = AverageScores[MovieCharacter.Dory]!.toJSON()
+        doryJSON["Person"] = JSON(MovieCharacter.Dory.rawValue)
+        
+        //get string to pass as body to request then send
+        if let doryJSONstring = doryJSON.rawString(){
+            request.sendString(doryJSONstring, completionHandler:nil)//send to cloudant
+            blueLogger.info("Successfully sent Dory's ToneScore to Cloudant")
+        }else{
+            blueLogger.warn("Unable to convert Dory's ToneScore into a String")
+        }
+        
         Logger.send()
         Analytics.send()
     }

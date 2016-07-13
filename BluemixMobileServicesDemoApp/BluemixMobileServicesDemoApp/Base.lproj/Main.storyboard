@@ -20,6 +20,9 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m66-ei-5Nh">
                                 <rect key="frame" x="480" y="128" width="100" height="82"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="rqO-Zi-2xh"/>
+                                </constraints>
                                 <state key="normal" image="vader">
                                     <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -29,9 +32,6 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVb-cu-pOn">
                                 <rect key="frame" x="480" y="237" width="100" height="82"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="82" id="j1h-N2-jrH"/>
-                                </constraints>
                                 <state key="normal" image="jack">
                                     <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -42,9 +42,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KFG-3t-gha">
                                 <rect key="frame" x="20" y="20" width="560" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="ULe-Gg-VNu"/>
-                                </constraints>
                                 <string key="text">Click on a character to have Watson analyze that character's tone.
 
 Tell Watson how your day is going, and he will analyze your tone, then match you to the closest movie character</string>
@@ -55,8 +52,8 @@ Tell Watson how your day is going, and he will analyze your tone, then match you
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKM-J5-ct2">
                                 <rect key="frame" x="20" y="128" width="100" height="82"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="82" id="6Wl-Py-E1F"/>
-                                    <constraint firstAttribute="width" constant="100" id="7l7-eh-vK9"/>
+                                    <constraint firstAttribute="height" constant="82" id="CEd-PP-8oE"/>
+                                    <constraint firstAttribute="width" constant="100" id="ri9-Xp-7Eb"/>
                                 </constraints>
                                 <state key="normal" image="ron">
                                     <color key="titleColor" red="0.63585737179487178" green="0.63585737179487178" blue="0.63585737179487178" alpha="1" colorSpace="calibratedRGB"/>
@@ -69,7 +66,7 @@ Tell Watson how your day is going, and he will analyze your tone, then match you
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iP1-A7-Ji2">
                                 <rect key="frame" x="20" y="246" width="100" height="82"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="82" id="bnD-JN-pni"/>
+                                    <constraint firstAttribute="height" constant="82" id="dEc-Ms-mQC"/>
                                 </constraints>
                                 <state key="normal" image="bond">
                                     <color key="titleColor" red="0.63585737180000002" green="0.63585737180000002" blue="0.63585737180000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -82,7 +79,7 @@ Tell Watson how your day is going, and he will analyze your tone, then match you
                                 <rect key="frame" x="20" y="498" width="87" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="87" id="7n3-5i-qAw"/>
+                                    <constraint firstAttribute="width" constant="87" id="eH4-hN-J5F"/>
                                 </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
@@ -99,10 +96,10 @@ Tell Watson how your day is going, and he will analyze your tone, then match you
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rpj-uq-oxA">
-                                <rect key="frame" x="244" y="498" width="112" height="30"/>
+                                <rect key="frame" x="468" y="498" width="112" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="112" id="Alb-wO-qOK"/>
+                                    <constraint firstAttribute="width" constant="112" id="3Ty-v9-OXm"/>
                                 </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
@@ -126,8 +123,11 @@ Tell Watson how your day is going, and he will analyze your tone, then match you
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6J2-rg-JzJ">
-                                <rect key="frame" x="180" y="306" width="240" height="128"/>
+                                <rect key="frame" x="89" y="345" width="422" height="89"/>
                                 <color key="backgroundColor" red="0.90064675080000001" green="0.90064675080000001" blue="0.90064675080000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="89" id="QYm-Nx-bIi"/>
+                                </constraints>
                                 <color key="textColor" red="0.0" green="0.2253411746" blue="0.36592548079999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" keyboardAppearance="alert"/>
@@ -135,14 +135,19 @@ Tell Watson how your day is going, and he will analyze your tone, then match you
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWf-xH-FfL">
                                 <rect key="frame" x="250" y="188" width="100" height="82"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="82" id="TGk-3c-XKW"/>
-                                    <constraint firstAttribute="width" constant="100" id="qMa-sS-Usw"/>
+                                    <constraint firstAttribute="width" constant="100" id="cMu-Nt-2jp"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="dori"/>
+                                <connections>
+                                    <action selector="dory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c5H-gc-R0s"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DxG-8M-TGU">
-                                <rect key="frame" x="448" y="498" width="132" height="30"/>
+                                <rect key="frame" x="234" y="550" width="132" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="132" id="wkT-Ra-iMT"/>
+                                </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Send me the Code!">
@@ -160,36 +165,36 @@ Tell Watson how your day is going, and he will analyze your tone, then match you
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.22534117459895406" blue="0.36592548076923082" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="DxG-8M-TGU" firstAttribute="leading" secondItem="Rpj-uq-oxA" secondAttribute="trailing" constant="92" id="0nx-BB-Onh"/>
-                            <constraint firstItem="IVb-cu-pOn" firstAttribute="leading" secondItem="6J2-rg-JzJ" secondAttribute="trailing" constant="60" id="6KI-ib-uwe"/>
-                            <constraint firstItem="LWf-xH-FfL" firstAttribute="centerX" secondItem="6J2-rg-JzJ" secondAttribute="centerX" id="8jq-FX-txv"/>
-                            <constraint firstItem="iP1-A7-Ji2" firstAttribute="leading" secondItem="DLx-Rs-BFM" secondAttribute="leading" id="Gq2-n1-Neu"/>
-                            <constraint firstItem="Rpj-uq-oxA" firstAttribute="top" secondItem="bGr-r8-HXy" secondAttribute="bottom" constant="26" id="IwB-xE-R6a"/>
-                            <constraint firstItem="6J2-rg-JzJ" firstAttribute="top" secondItem="LWf-xH-FfL" secondAttribute="bottom" constant="36" id="ME7-m5-ejZ"/>
-                            <constraint firstItem="bGr-r8-HXy" firstAttribute="centerX" secondItem="Rpj-uq-oxA" secondAttribute="centerX" id="N0N-U9-2mG"/>
-                            <constraint firstItem="m66-ei-5Nh" firstAttribute="trailing" secondItem="IVb-cu-pOn" secondAttribute="trailing" id="NV7-z0-9M1"/>
-                            <constraint firstItem="iP1-A7-Ji2" firstAttribute="top" secondItem="SKM-J5-ct2" secondAttribute="bottom" constant="36" id="NlD-Jc-wVS"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="leading" secondItem="SKM-J5-ct2" secondAttribute="leading" id="OrW-jn-kmU"/>
-                            <constraint firstItem="DLx-Rs-BFM" firstAttribute="baseline" secondItem="Rpj-uq-oxA" secondAttribute="baseline" id="PCN-2P-VWh"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="centerX" secondItem="LWf-xH-FfL" secondAttribute="centerX" id="QwI-gs-UNU"/>
-                            <constraint firstItem="IVb-cu-pOn" firstAttribute="top" secondItem="m66-ei-5Nh" secondAttribute="bottom" constant="27" id="T34-2h-hx0"/>
-                            <constraint firstItem="SKM-J5-ct2" firstAttribute="top" secondItem="KFG-3t-gha" secondAttribute="bottom" constant="8" symbolic="YES" id="ToT-jj-gXU"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Ur0-hl-jFa"/>
-                            <constraint firstItem="LWf-xH-FfL" firstAttribute="top" secondItem="KFG-3t-gha" secondAttribute="bottom" constant="68" id="VTD-m8-jeg"/>
-                            <constraint firstItem="SKM-J5-ct2" firstAttribute="top" secondItem="m66-ei-5Nh" secondAttribute="top" id="VbN-i7-qfE"/>
-                            <constraint firstItem="m66-ei-5Nh" firstAttribute="leading" secondItem="IVb-cu-pOn" secondAttribute="leading" id="atE-tE-3Ff"/>
-                            <constraint firstItem="SKM-J5-ct2" firstAttribute="trailing" secondItem="iP1-A7-Ji2" secondAttribute="trailing" id="beG-vt-gHe"/>
-                            <constraint firstItem="Rpj-uq-oxA" firstAttribute="baseline" secondItem="DxG-8M-TGU" secondAttribute="baseline" id="cra-1u-ts8"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="trailing" secondItem="m66-ei-5Nh" secondAttribute="trailing" id="iz2-L6-YYp"/>
-                            <constraint firstItem="bGr-r8-HXy" firstAttribute="top" secondItem="6J2-rg-JzJ" secondAttribute="bottom" constant="8" symbolic="YES" id="jJR-5Z-Xcd"/>
-                            <constraint firstItem="6J2-rg-JzJ" firstAttribute="centerX" secondItem="bGr-r8-HXy" secondAttribute="centerX" id="lEA-vQ-J0I"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ms3-h3-Egz"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DLx-Rs-BFM" secondAttribute="bottom" constant="72" id="nHH-cf-1fd"/>
-                            <constraint firstItem="KFG-3t-gha" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pWz-ZD-4j3"/>
-                            <constraint firstItem="SKM-J5-ct2" firstAttribute="bottom" secondItem="m66-ei-5Nh" secondAttribute="bottom" id="qPp-aR-Emo"/>
-                            <constraint firstItem="IVb-cu-pOn" firstAttribute="trailing" secondItem="DxG-8M-TGU" secondAttribute="trailing" id="wi4-S8-eHW"/>
-                            <constraint firstItem="SKM-J5-ct2" firstAttribute="leading" secondItem="iP1-A7-Ji2" secondAttribute="leading" id="xdm-Zv-JIc"/>
-                            <constraint firstItem="6J2-rg-JzJ" firstAttribute="leading" secondItem="iP1-A7-Ji2" secondAttribute="trailing" constant="60" id="y9e-fx-EN9"/>
+                            <constraint firstItem="bGr-r8-HXy" firstAttribute="top" secondItem="6J2-rg-JzJ" secondAttribute="bottom" constant="8" symbolic="YES" id="1f7-h8-qck"/>
+                            <constraint firstItem="6J2-rg-JzJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="69" id="1nz-YG-0U4"/>
+                            <constraint firstItem="LWf-xH-FfL" firstAttribute="top" secondItem="KFG-3t-gha" secondAttribute="bottom" constant="68" id="3Eo-gK-q76"/>
+                            <constraint firstItem="SKM-J5-ct2" firstAttribute="top" secondItem="m66-ei-5Nh" secondAttribute="top" id="3zG-WB-s2C"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="centerX" secondItem="LWf-xH-FfL" secondAttribute="centerX" id="4zZ-vc-xdc"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="8CU-1A-Lcg"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="DcI-YC-HGC"/>
+                            <constraint firstItem="m66-ei-5Nh" firstAttribute="leading" secondItem="IVb-cu-pOn" secondAttribute="leading" id="FV5-PE-JOQ"/>
+                            <constraint firstItem="DLx-Rs-BFM" firstAttribute="baseline" secondItem="Rpj-uq-oxA" secondAttribute="baseline" id="GpG-Ti-r2F"/>
+                            <constraint firstItem="m66-ei-5Nh" firstAttribute="trailing" secondItem="IVb-cu-pOn" secondAttribute="trailing" id="L0w-N4-YgX"/>
+                            <constraint firstItem="IVb-cu-pOn" firstAttribute="top" secondItem="m66-ei-5Nh" secondAttribute="bottom" constant="27" id="L6V-eq-fuq"/>
+                            <constraint firstItem="SKM-J5-ct2" firstAttribute="leading" secondItem="iP1-A7-Ji2" secondAttribute="leading" id="LsE-9N-nfp"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="leading" secondItem="SKM-J5-ct2" secondAttribute="leading" id="Ry6-p4-cKO"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="trailing" secondItem="m66-ei-5Nh" secondAttribute="trailing" id="SGe-sd-vdK"/>
+                            <constraint firstItem="SKM-J5-ct2" firstAttribute="bottom" secondItem="m66-ei-5Nh" secondAttribute="bottom" id="SdU-go-HBI"/>
+                            <constraint firstItem="SKM-J5-ct2" firstAttribute="trailing" secondItem="iP1-A7-Ji2" secondAttribute="trailing" id="VfU-c8-V70"/>
+                            <constraint firstItem="LWf-xH-FfL" firstAttribute="centerX" secondItem="6J2-rg-JzJ" secondAttribute="centerX" id="fR6-97-SHN"/>
+                            <constraint firstItem="KFG-3t-gha" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gY3-p0-Xg7"/>
+                            <constraint firstItem="bGr-r8-HXy" firstAttribute="centerX" secondItem="DxG-8M-TGU" secondAttribute="centerX" id="hrv-pm-nUd"/>
+                            <constraint firstItem="IVb-cu-pOn" firstAttribute="trailing" secondItem="Rpj-uq-oxA" secondAttribute="trailing" id="jj8-KN-Wpd"/>
+                            <constraint firstItem="SKM-J5-ct2" firstAttribute="top" secondItem="KFG-3t-gha" secondAttribute="bottom" constant="8" symbolic="YES" id="kck-Hz-y2S"/>
+                            <constraint firstItem="6J2-rg-JzJ" firstAttribute="top" secondItem="iP1-A7-Ji2" secondAttribute="bottom" constant="17" id="kfW-T4-onT"/>
+                            <constraint firstItem="6J2-rg-JzJ" firstAttribute="top" secondItem="IVb-cu-pOn" secondAttribute="bottom" constant="26" id="lDM-K2-ekB"/>
+                            <constraint firstAttribute="bottom" secondItem="DxG-8M-TGU" secondAttribute="bottom" constant="20" symbolic="YES" id="njj-n3-2fl"/>
+                            <constraint firstItem="DLx-Rs-BFM" firstAttribute="top" secondItem="6J2-rg-JzJ" secondAttribute="bottom" constant="64" id="trw-l7-5Nh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DLx-Rs-BFM" secondAttribute="bottom" constant="72" id="ubt-5w-5BJ"/>
+                            <constraint firstItem="iP1-A7-Ji2" firstAttribute="leading" secondItem="DLx-Rs-BFM" secondAttribute="leading" id="vD0-BL-qMQ"/>
+                            <constraint firstItem="6J2-rg-JzJ" firstAttribute="centerX" secondItem="bGr-r8-HXy" secondAttribute="centerX" id="vfY-x5-9cG"/>
+                            <constraint firstItem="6J2-rg-JzJ" firstAttribute="top" secondItem="LWf-xH-FfL" secondAttribute="bottom" constant="75" id="xdg-IG-XEW"/>
+                            <constraint firstItem="iP1-A7-Ji2" firstAttribute="top" secondItem="SKM-J5-ct2" secondAttribute="bottom" constant="36" id="z1F-bQ-zR2"/>
                         </constraints>
                     </view>
                     <connections>
