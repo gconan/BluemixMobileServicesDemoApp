@@ -1,4 +1,7 @@
 # BluemixMobileServicesDemoApp
+[![Swift 2.2](https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 A demo iOS app that shows Mobile Analytics, Watson, and OpenWhisk used to analyze tone and post to a slack channel.
 
 
