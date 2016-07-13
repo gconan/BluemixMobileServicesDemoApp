@@ -14,9 +14,8 @@ import BMSCore
 import BMSAnalytics
 
 class ViewController: UIViewController {
-    private let jsonString: String = "{\"Person\":\"CONAN\",\"document_tone\": {\"tone_categories\": [{\"tones\": [{\"score\": 0.328916,\"tone_id\": \"anger\",\"tone_name\": \"Anger\"},{\"score\": 0.781419,\"tone_id\": \"disgust\",\"tone_name\": \"Disgust\"},{\"score\": 0.100935,\"tone_id\": \"fear\",\"tone_name\": \"Fear\"},{\"score\": 0.022298,\"tone_id\": \"joy\",\"tone_name\": \"Joy\"},{\"score\": 0.306449,\"tone_id\": \"sadness\",\"tone_name\": \"Sadness\"}],\"category_id\": \"emotion_tone\",\"category_name\": \"Emotion Tone\"},{\"tones\": [{\"score\": 0,\"tone_id\": \"analytical\",\"tone_name\": \"Analytical\"},{\"score\": 0,\"tone_id\": \"confident\",\"tone_name\": \"Confident\"},{\"score\": 0.831,\"tone_id\": \"tentative\",\"tone_name\": \"Tentative\"}],\"category_id\": \"language_tone\",\"category_name\": \"Language Tone\"},{\"tones\": [{\"score\": 0.071,\"tone_id\": \"openness_big5\",\"tone_name\": \"Openness\"},{\"score\": 0.017,\"tone_id\": \"conscientiousness_big5\",\"tone_name\": \"Conscientiousness\"},{\"score\": 0.966,\"tone_id\": \"extraversion_big5\",\"tone_name\": \"Extraversion\"},{\"score\": 0.558,\"tone_id\": \"agreeableness_big5\",\"tone_name\": \"Agreeableness\"},{\"score\": 0.62,\"tone_id\": \"emotional_range_big5\",\"tone_name\": \"Emotional Range\"}],\"category_id\": \"social_tone\",\"category_name\": \"Social Tone\"}]}}"
+    private let cloudantURL:String = "https://756b57dd-f7bb-4721-adeb-9e7f45c99497-bluemix.cloudant.com/personality_insights/"
 
-    
     private let blueLogger: Logger = Logger.logger(forName: "DemoAppViewController")
     
     @IBOutlet weak var sendTextButton: UIButton!
@@ -115,13 +114,15 @@ class ViewController: UIViewController {
     @IBAction func ronBurgandy(sender: AnyObject) {
         blueLogger.info("Ron Burgandy")
         
-        let request = Request(url: "https://756b57dd-f7bb-4721-adeb-9e7f45c99497-bluemix.cloudant.com/personality_insights/", method: HttpMethod.POST)
+        let request = Request(url: cloudantURL, method: HttpMethod.POST)
         request.headers = ["Content-Type":"application/json"]
         
         var ronJSON = AverageScores[MovieCharacter.RonBurgandy]!.toJSON()
         ronJSON["Person"] = JSON(MovieCharacter.RonBurgandy.rawValue)
+        
         if let ronJSONstring = ronJSON.rawString(){
             request.sendString(ronJSONstring, completionHandler:nil)
+            blueLogger.info("Successfully sent Ron's ToneScore to Cloudant")
         }else{
             blueLogger.warn("Unable to convert Ron's ToneScore into a String")
         }
@@ -132,7 +133,18 @@ class ViewController: UIViewController {
     @IBAction func darthVader(sender: AnyObject) {
         blueLogger.info("Darth Vader")
         
-        //upload to cloudant
+        let request = Request(url: cloudantURL, method: HttpMethod.POST)
+        request.headers = ["Content-Type":"application/json"]
+        
+        var darthJSON = AverageScores[MovieCharacter.DarthVader]!.toJSON()
+        darthJSON["Person"] = JSON(MovieCharacter.DarthVader.rawValue)
+        
+        if let darthJSONstring = darthJSON.rawString(){
+            request.sendString(darthJSONstring, completionHandler:nil)
+            blueLogger.info("Successfully sent Darth's ToneScore to Cloudant")
+        }else{
+            blueLogger.warn("Unable to convert Darth's ToneScore into a String")
+        }
         
         Logger.send()
         Analytics.send()
@@ -141,7 +153,18 @@ class ViewController: UIViewController {
     @IBAction func jackSparrow(sender: AnyObject) {
         blueLogger.info("Jack Sparrow")
         
-        //upload to cloudant
+        let request = Request(url: cloudantURL, method: HttpMethod.POST)
+        request.headers = ["Content-Type":"application/json"]
+        
+        var jackJSON = AverageScores[MovieCharacter.JackSparrow]!.toJSON()
+        jackJSON["Person"] = JSON(MovieCharacter.JackSparrow.rawValue)
+        
+        if let jackJSONstring = jackJSON.rawString(){
+            request.sendString(jackJSONstring, completionHandler:nil)
+            blueLogger.info("Successfully sent Jack's ToneScore to Cloudant")
+        }else{
+            blueLogger.warn("Unable to convert Jack's ToneScore into a String")
+        }
         
         Logger.send()
         Analytics.send()
@@ -151,7 +174,18 @@ class ViewController: UIViewController {
         let logger = Logger.logger(forName: "BondLogger")
         logger.info("James Bond")
         
-        //upload to cloudant
+        let request = Request(url: cloudantURL, method: HttpMethod.POST)
+        request.headers = ["Content-Type":"application/json"]
+        
+        var jamesJSON = AverageScores[MovieCharacter.JamesBond]!.toJSON()
+        jamesJSON["Person"] = JSON(MovieCharacter.JamesBond.rawValue)
+        
+        if let jamesJSONstring = jamesJSON.rawString(){
+            request.sendString(jamesJSONstring, completionHandler:nil)
+            blueLogger.info("Successfully sent James' ToneScore to Cloudant")
+        }else{
+            blueLogger.warn("Unable to convert James' ToneScore into a String")
+        }
 
         Logger.send()
         Analytics.send()
@@ -175,8 +209,20 @@ class ViewController: UIViewController {
             let speech = results.last?.alternatives.last?.transcript
             self.toneAnalyzer.getTone(speech!, failure: failure) { tones in
                 var payload:JSON = tones.convertToSwiftyJSON()
-                payload["Person"] = JSON("User \(self.customUserCount)")
-                //save to cloudant
+                payload["Person"] = JSON("User\(self.customUserCount)")
+                
+                let request = Request(url: self.cloudantURL, method: HttpMethod.POST)
+                request.headers = ["Content-Type":"application/json"]
+                
+                if let userString = payload.rawString(){
+                    request.sendString(userString, completionHandler:nil)
+                    self.blueLogger.info("Successfully sent User\(self.customUserCount) ToneScore to Cloudant")
+                }else{
+                    self.blueLogger.warn("Unable to convert User\(self.customUserCount) ToneScore into a String")
+                }
+                
+                Logger.send()
+                Analytics.send()
             }
         }
         
@@ -200,8 +246,18 @@ class ViewController: UIViewController {
         let failure = { (error: NSError) in print(error) }
         self.toneAnalyzer.getTone(text, failure: failure) { tones in
             var payload:JSON = tones.convertToSwiftyJSON()
-            payload["Person"] = JSON("User \(self.customUserCount)")
-            //save to cloudant
+            payload["Person"] = JSON("User\(self.customUserCount)")
+            
+            let request = Request(url: self.cloudantURL, method: HttpMethod.POST)
+            request.headers = ["Content-Type":"application/json"]
+            
+            if let userString = payload.rawString(){
+                request.sendString(userString, completionHandler:nil)
+                self.blueLogger.info("Successfully sent User\(self.customUserCount) ToneScore to Cloudant")
+            }else{
+                self.blueLogger.warn("Unable to convert User\(self.customUserCount) ToneScore into a String")
+            }
+
         }
         customUserCount = customUserCount + 1
     }
