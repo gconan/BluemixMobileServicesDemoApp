@@ -14,14 +14,17 @@ import BMSCore
 public class ToneScore{
     private var emotionScore: [Emotions:Double] = [:]
     private var socialScore: [Social:Double] = [:]
-    private var WritingScore: [Writing:Double] = [:]
+    private var writingScore: [Writing:Double] = [:]
     
     private var runningEmotionScore:[Emotions:Double] = [:]
     private var runningSocialScore:[Social:Double] = [:]
     private var runningWritingScore:[Writing:Double] = [:]
     
+    //used for average calculation
     private var count:Double = 0
     
+    
+    //lists used for forLoops
     private let EmotionList = [Emotions.Anger, Emotions.Disgust, Emotions.Fear, Emotions.Joy, Emotions.Sadness]
     private let SocialList = [Social.Agreeableness, Social.Conscientiousness, Social.Extraversion, Social.Openness, Social.Neuroticism]
     private let WritingList = [Writing.Analytical, Writing.Confident, Writing.Tentative]
@@ -39,13 +42,14 @@ public class ToneScore{
             self.runningSocialScore[s] = 0
         }
         for l:Writing in self.WritingList{
-            self.WritingScore[l] = 0
+            self.writingScore[l] = 0
             self.runningWritingScore[l] = 0
         }
         
         self.count = 0
     }
     
+    //Take a raw json doc and add the scores to the running calculation for average
     public func addToAverage(raw:JSON){
         let categories = raw["document_tone"]["tone_categories"]
         
@@ -54,10 +58,13 @@ public class ToneScore{
             
             if id.string == Emotions.tone.rawValue{
                 addJSONToEmotionAverage(tone)
+                
             }else if id.string == Social.tone.rawValue{
                 addJSONToSocialAverage(tone)
+                
             }else if id.string == Writing.tone.rawValue{
                 addJSONToLangAverage(tone)
+                
             }else{
                 blueLogger.debug("Unrecognized Tone Category: \(id.string)")
             }
@@ -88,8 +95,10 @@ public class ToneScore{
                 
             }else if id.string == Emotions.Joy.rawValue{
                 joyScore = tone["score"].double!
+                
             }else if id.string == Emotions.Sadness.rawValue{
                 sadScore = tone["score"].double!
+                
             }else{
                 blueLogger.warn("Unrecognized Emotion Tone \(id.string)")
             }
@@ -159,6 +168,7 @@ public class ToneScore{
                 
             }else if id.string == Writing.Tentative.rawValue{
                 tentScore = tone["score"].double!
+                
             }else{
                 blueLogger.warn("Unrecognized Writing Tone \(id.string)")
             }
@@ -179,9 +189,9 @@ public class ToneScore{
     
     private func calculateWritingAverage() -> [Writing:Double]{
         for l:Writing in self.WritingList{
-            self.WritingScore[l] = self.runningWritingScore[l]!/self.count
+            self.writingScore[l] = self.runningWritingScore[l]!/self.count
         }
-        return self.WritingScore
+        return self.writingScore
     }
 
     private func calculateSocialAverage() -> [Social:Double]{
@@ -191,6 +201,7 @@ public class ToneScore{
         return self.socialScore
     }
     
+    //retrieve information and form JSON
     public func toJSON()->JSON{
         var result: JSON = [:]
         result["document_tone"] = [:]
@@ -234,7 +245,7 @@ public class ToneScore{
         self.calculateWritingAverage()
         for l:Writing in self.WritingList{
             var tone: JSON = [:]
-            tone["score"] = JSON(self.WritingScore[l]!)
+            tone["score"] = JSON(self.writingScore[l]!)
             tone["tone_id"] = JSON(l.rawValue)
             tone["tone_name"] = JSON(l.toUpperCaseName())
             langTones.append(tone)
@@ -252,6 +263,7 @@ public class ToneScore{
         return result
     }
 
+    //enum for emotion's tone IDs
    public enum Emotions:String{
         case tone = "emotion_tone"
         case name = "Emotion Tone"
@@ -262,6 +274,7 @@ public class ToneScore{
         case Sadness = "sadness"
     }
     
+    //enum for writing's tone ids
     public enum Writing:String{
         case tone = "writing_tone"
         case name = "Writing Tone"
@@ -270,6 +283,7 @@ public class ToneScore{
         case Tentative = "tentative"
     }
     
+    //enum for social's tone ids
     public enum Social:String{
         case tone = "social_tone"
         case name = "Social Tone"
@@ -281,6 +295,10 @@ public class ToneScore{
     }    
     
 }
+
+//extensions for the enums to get the tone name from the tone id
+
+
 
 extension ToneScore.Emotions{
     func toUpperCaseName()->String{

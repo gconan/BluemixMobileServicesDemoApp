@@ -19,7 +19,7 @@ private let toneName:String = "tone_name"
 private let categoryID:String = "category_id"
 private let categoryName:String = "category_name"
 
-
+//extract information from the ToneAnalysis and make a swiftyJson object
 extension ToneAnalysis{
     
     public func convertToSwiftyJSON()->JSON{
