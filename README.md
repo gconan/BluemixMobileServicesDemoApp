@@ -2,7 +2,7 @@
 [![Swift 2.2](https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-A demo iOS app that shows Mobile Analytics, Watson, and OpenWhisk used to analyze tone and post to a slack channel.
+A demo iOS Swift app that shows Mobile Analytics, Watson, and OpenWhisk used to analyze tone and post to a slack channel.
 
 
 ## About the App
@@ -23,17 +23,22 @@ I created the app for BlueChasm's Developer Day in Houston on July 14, 2016. The
  * [Swifty JSON](https://github.com/SwiftyJSON/SwiftyJSON)
     * Makes working with JSON in Swift easier
 
-### The app also uses these Bluemix services:
+### Required Bluemix services:
  * [Open Whisk](https://new-console.ng.bluemix.net/openwhisk/?cm_mmc=developerWorks-_-dWdevcenter-_-open-_-lp)
     * Used to detect Cloudant Database changes and post the changes to [Slack](https://slack.com/)
     * [Open Whisk Documentation](https://developer.ibm.com/open/openwhisk/)
  * [Cloudant](https://new-console.ng.bluemix.net/catalog/services/cloudant-nosql-db/)
     * A NoSQL database to store Tone Analysis results
     * [Cloudant Documentation](https://docs.cloudant.com/authorization.html)
-
+ * [Watson Speech to Text](https://new-console.ng.bluemix.net/catalog/services/speech-to-text/)
+    * Uses cognitive knowledge of the composition of an audio signal to generate an accurate transcription
+    * [Watson Speech to Text Documentation](https://www.ibm.com/watson/developercloud/speech-to-text.html)
+ * [Watson Tone Analyzer](https://new-console.ng.bluemix.net/catalog/services/tone-analyzer/)
+    * Uses cognitive linguistic analysis to detect three types of tones from text: emotion, social tendencies, and language style
+    * [Watson Tone Analyzer](https://www.ibm.com/watson/developercloud/tone-analyzer/api/v3/)
 
 ## To Run the App
- * clone or fork this repository
+ * Clone or fork this repository
  * `cd BluemixMobileServicesDemoApp/`
  * Ensure that you have [Carthage](https://github.com/Carthage/Carthage#installing-carthage)
  * `carthage update --platform iOS`
