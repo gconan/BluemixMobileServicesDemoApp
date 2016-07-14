@@ -13,28 +13,22 @@ I created the app for BlueChasm's Developer Day in Houston on July 14, 2016. The
 ### The app contains these frameworks:
  * [Bluemix Mobile Analytics](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html) (Beta Coming Soon!) [(Documentation)](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html)
     * Shows Analytics related to app usage and logging
- * [Watson Speech to Text](https://new-console.ng.bluemix.net/catalog/services/speech-to-text/)
+ * [Watson Speech to Text](https://new-console.ng.bluemix.net/catalog/services/speech-to-text/)[(Documentation)](http://www.ibm.com/watson/developercloud/speech-to-text/api/v1/)
     * Transcribes speech input to the device to text
-    * [Speech to Text Documentation](http://www.ibm.com/watson/developercloud/speech-to-text/api/v1/)
- * [Watson Tone Analysis](https://new-console.ng.bluemix.net/catalog/services/tone-analyzer/)
+ * [Watson Tone Analysis](https://new-console.ng.bluemix.net/catalog/services/tone-analyzer/)[(Documentation)](http://www.ibm.com/watson/developercloud/tone-analyzer/api/v3/#introduction)
     * Analyzes the tone of text provided to the service
-    * [Tone Analysis Documentation](http://www.ibm.com/watson/developercloud/tone-analyzer/api/v3/#introduction)
  * [Swifty JSON](https://github.com/SwiftyJSON/SwiftyJSON)
     * Makes working with JSON in Swift easier
 
 ### Required Bluemix services:
- * [Open Whisk](https://new-console.ng.bluemix.net/openwhisk/?cm_mmc=developerWorks-_-dWdevcenter-_-open-_-lp)
+ * [Open Whisk](https://new-console.ng.bluemix.net/openwhisk/?cm_mmc=developerWorks-_-dWdevcenter-_-open-_-lp)[(Documentation)](https://developer.ibm.com/open/openwhisk/)
     * Used to detect Cloudant Database changes and post the changes to [Slack](https://slack.com/)
-    * [Open Whisk Documentation](https://developer.ibm.com/open/openwhisk/)
- * [Cloudant](https://new-console.ng.bluemix.net/catalog/services/cloudant-nosql-db/)
+ * [Cloudant](https://new-console.ng.bluemix.net/catalog/services/cloudant-nosql-db/)[(Documentation)](https://docs.cloudant.com/authorization.html)
     * A NoSQL database to store Tone Analysis results
-    * [Cloudant Documentation](https://docs.cloudant.com/authorization.html)
- * [Watson Speech to Text](https://new-console.ng.bluemix.net/catalog/services/speech-to-text/)
+ * [Watson Speech to Text](https://new-console.ng.bluemix.net/catalog/services/speech-to-text/)[(Documentation)](https://www.ibm.com/watson/developercloud/speech-to-text.html)
     * Uses cognitive knowledge of the composition of an audio signal to generate an accurate transcription
-    * [Watson Speech to Text Documentation](https://www.ibm.com/watson/developercloud/speech-to-text.html)
- * [Watson Tone Analyzer](https://new-console.ng.bluemix.net/catalog/services/tone-analyzer/)
+ * [Watson Tone Analyzer](https://new-console.ng.bluemix.net/catalog/services/tone-analyzer/)[(Documentation)](https://www.ibm.com/watson/developercloud/tone-analyzer/api/v3/)
     * Uses cognitive linguistic analysis to detect three types of tones from text: emotion, social tendencies, and language style
-    * [Watson Tone Analyzer](https://www.ibm.com/watson/developercloud/tone-analyzer/api/v3/)
 
 ## To Run the App
  * Clone or fork this repository
