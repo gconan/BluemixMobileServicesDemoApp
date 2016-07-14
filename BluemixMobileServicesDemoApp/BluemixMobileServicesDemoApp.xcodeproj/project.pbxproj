@@ -35,6 +35,7 @@
 		CE31C3EF1D3541C300CE6D04 /* BMSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE31C3EE1D3541C300CE6D04 /* BMSCore.framework */; };
 		CE31C3F01D3541D100CE6D04 /* BMSCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE31C3EE1D3541C300CE6D04 /* BMSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CE31C3F31D35831400CE6D04 /* ToneToJSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31C3F21D35831400CE6D04 /* ToneToJSONConverter.swift */; };
+		CE31C4281D36BBE000CE6D04 /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31C4271D36BBE000CE6D04 /* ResultsController.swift */; };
 		CECCCC4B1D2C380000868C29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCCC4A1D2C380000868C29 /* AppDelegate.swift */; };
 		CECCCC4D1D2C380000868C29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCCC4C1D2C380000868C29 /* ViewController.swift */; };
 		CECCCC501D2C380000868C29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECCCC4E1D2C380000868C29 /* Main.storyboard */; };
@@ -78,6 +79,7 @@
 		CE31C3D81D35414400CE6D04 /* ToneAnalyzerV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ToneAnalyzerV3.framework; path = Carthage/Build/iOS/ToneAnalyzerV3.framework; sourceTree = "<group>"; };
 		CE31C3EE1D3541C300CE6D04 /* BMSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSCore.framework; path = Carthage/Build/iOS/BMSCore.framework; sourceTree = "<group>"; };
 		CE31C3F21D35831400CE6D04 /* ToneToJSONConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToneToJSONConverter.swift; sourceTree = "<group>"; };
+		CE31C4271D36BBE000CE6D04 /* ResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsController.swift; sourceTree = "<group>"; };
 		CECCCC471D2C380000868C29 /* BluemixMobileServicesDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluemixMobileServicesDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECCCC4A1D2C380000868C29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECCCC4C1D2C380000868C29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				CECCCC5C1D2C530700868C29 /* EmailLinksController.swift */,
 				CECCD4841D301F0100112294 /* ToneScore.swift */,
 				CE31C3F21D35831400CE6D04 /* ToneToJSONConverter.swift */,
+				CE31C4271D36BBE000CE6D04 /* ResultsController.swift */,
 			);
 			path = BluemixMobileServicesDemoApp;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			files = (
 				CECCD4851D301F0100112294 /* ToneScore.swift in Sources */,
 				CE31C3F31D35831400CE6D04 /* ToneToJSONConverter.swift in Sources */,
+				CE31C4281D36BBE000CE6D04 /* ResultsController.swift in Sources */,
 				CECCCC4D1D2C380000868C29 /* ViewController.swift in Sources */,
 				CECCCC5D1D2C530700868C29 /* EmailLinksController.swift in Sources */,
 				CECCCC4B1D2C380000868C29 /* AppDelegate.swift in Sources */,

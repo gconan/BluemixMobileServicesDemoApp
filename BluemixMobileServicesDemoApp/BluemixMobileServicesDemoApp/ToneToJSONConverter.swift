@@ -58,4 +58,32 @@ extension ToneAnalysis{
         json[docTone][toneCat] = JSON(bigTemp)
         return json
     }
+    
+    public func getResultsInDictionary(userID:Int)->[String:Double]{
+        var result:[String:Double] = [String:Double]()
+        for cat in self.documentTone{
+            for tone in cat.tones {
+                result[tone.name] = Double(round(tone.score * 1000)/1000)
+            }
+        }
+        result["Person"] = Double(userID)
+        return result
+    }
+}
+
+extension JSON{
+    public func getToneScore(toneId:String)->Double{
+        let categories = self["document_tone"]["tone_categories"]
+        
+        for (_,cat):(String, JSON) in categories{
+            let tones = cat["tones"]
+            
+            for (_,tone):(String, JSON) in tones{
+                if toneId == tone["tone_id"].stringValue{
+                    return tone["score"].double!
+                }
+            }
+        }
+        return -1.0
+    }
 }

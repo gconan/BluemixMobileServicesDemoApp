@@ -12,6 +12,8 @@ import BMSCore
 
 
 public class ToneScore{
+    private var dictionary: [String:Double] = [String:Double]()
+    
     private var emotionScore: [Emotions:Double] = [:]
     private var socialScore: [Social:Double] = [:]
     private var writingScore: [Writing:Double] = [:]
@@ -182,23 +184,33 @@ public class ToneScore{
 
     private func calculateEmotionAverage() -> [Emotions:Double]{
         for e:Emotions in self.EmotionList{
-            self.emotionScore[e] = self.runningEmotionScore[e]!/self.count
+            self.emotionScore[e] = Double(round(self.runningEmotionScore[e]!/self.count * 1000)/1000)
+            self.dictionary[e.toUpperCaseName()] = self.emotionScore[e]
         }
         return self.emotionScore
     }
     
     private func calculateWritingAverage() -> [Writing:Double]{
         for l:Writing in self.WritingList{
-            self.writingScore[l] = self.runningWritingScore[l]!/self.count
+            self.writingScore[l] = Double(round(self.runningWritingScore[l]!/self.count * 1000)/1000)
+            self.dictionary[l.toUpperCaseName()] = self.writingScore[l]
         }
         return self.writingScore
     }
 
     private func calculateSocialAverage() -> [Social:Double]{
         for s:Social in self.SocialList{
-            self.socialScore[s] = self.runningSocialScore[s]!/self.count
+            self.socialScore[s] = Double(round(self.runningSocialScore[s]!/self.count * 1000)/1000)
+            self.dictionary[s.toUpperCaseName()] = self.socialScore[s]
         }
         return self.socialScore
+    }
+    
+    public func scoresToDictionary()->[String:Double]{
+        self.calculateSocialAverage()
+        self.calculateEmotionAverage()
+        self.calculateWritingAverage()
+        return self.dictionary
     }
     
     //retrieve information and form JSON
@@ -331,7 +343,7 @@ extension ToneScore.Social{
         case ToneScore.Social.Agreeableness:
             return "Agreeableness"
         case ToneScore.Social.Neuroticism:
-            return "Neuroticism"
+            return "Emotional Range"
         default:
             return""
         }

@@ -14,16 +14,24 @@ import BMSCore
 import BMSAnalytics
 
 class ViewController: UIViewController {
-    @IBOutlet weak var sendTextButton: UIButton!
-    @IBOutlet weak var textField: UITextView!
+    
+    @IBOutlet weak var typeMessageButton: UIButton!
+    @IBOutlet weak var sendCodeButton: UIButton!
+    @IBOutlet weak var talkButton: UIButton!
+    @IBOutlet weak var listeningIndicator: UIActivityIndicatorView!
+    
     
     //Bluemix info
     private let cloudantURL:String = "https://756b57dd-f7bb-4721-adeb-9e7f45c99497-bluemix.cloudant.com/personality_insights/"
     private let blueLogger: Logger = Logger.logger(forName: "DemoAppViewController")
     private let toneAnalyzer = ToneAnalyzer(username: "ef9ec932-f667-4c95-ad59-abee1c31b7cb", password: "UeT1J8F2oN3N", version: "2016-05-10", serviceURL: "https://gateway.watsonplatform.net/tone-analyzer/api")
     
+    //keep the average scores to quickly compare real users' tones
     var AverageScores: [MovieCharacter: ToneScore] = [:]
+    //used to uniquely name users
     private var customUserCount: Int = 0
+    //used to pass scores to other viewController
+    private var customUser:JSON = [:]
     
     //Characters
     enum MovieCharacter:String{
@@ -33,6 +41,9 @@ class ViewController: UIViewController {
         case JamesBond = "James Bond"
         case Dory = "Dory"
     }
+    private let characterList = [MovieCharacter.DarthVader, MovieCharacter.Dory, MovieCharacter.JackSparrow, MovieCharacter.JamesBond, MovieCharacter.RonBurgandy]
+    
+    private let toneList = [ToneScore.Writing.Analytical.rawValue, ToneScore.Writing.Confident.rawValue, ToneScore.Writing.Tentative.rawValue, ToneScore.Social.Agreeableness.rawValue, ToneScore.Social.Conscientiousness.rawValue, ToneScore.Social.Extraversion.rawValue, ToneScore.Social.Neuroticism.rawValue, ToneScore.Social.Openness.rawValue, ToneScore.Emotions.Anger.rawValue, ToneScore.Emotions.Disgust.rawValue, ToneScore.Emotions.Fear.rawValue, ToneScore.Emotions.Joy.rawValue, ToneScore.Emotions.Sadness.rawValue]
     
     
     //quotes
@@ -49,7 +60,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.listeningIndicator.stopAnimating()
         customUserCount = 0
+        
+        sendCodeButton.layer.cornerRadius = 10
+        sendCodeButton.clipsToBounds = true
+        
+        typeMessageButton.layer.cornerRadius = 10
+        typeMessageButton.clipsToBounds = true
+        
+        talkButton.layer.cornerRadius = 10
+        talkButton.clipsToBounds = true
         
         //initialization of Analytics
         BMSClient.sharedInstance.initializeWithBluemixAppRoute(nil, bluemixAppGUID: nil, bluemixRegion:".stage1.ng.bluemix.net")//region set for stage1, experimental
@@ -57,10 +79,6 @@ class ViewController: UIViewController {
         Analytics.enabled = true
         Logger.logStoreEnabled = true
         
-        
-        //hide optional text input
-        sendTextButton.hidden = true
-        textField.hidden = true
         
         //initialize the Average scores for each character
         self.AverageScores[MovieCharacter.RonBurgandy] = ToneScore()
@@ -138,7 +156,9 @@ class ViewController: UIViewController {
         
         //get string to pass as body to request then send
         if let ronJSONstring = ronJSON.rawString(){
-            request.sendString(ronJSONstring, completionHandler:nil)//send to cloudant
+            request.sendString(ronJSONstring, completionHandler: { (resp, error) in
+                            })
+            //request.sendString(ronJSONstring, completionHandler: )//send to cloudant
             blueLogger.info("Successfully sent Ron's ToneScore to Cloudant")
         }else{
             blueLogger.warn("Unable to convert Ron's ToneScore into a String")
@@ -246,7 +266,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func compareUserToCharacters(sender: AnyObject) {
-        
+        self.listeningIndicator.startAnimating()
         //initialize speech to text with SDK
         let username = "3e93abac-f01d-44e2-81a4-04bc2fbcbc23"
         let password = "ngmjfHMNKPEW"
@@ -260,12 +280,63 @@ class ViewController: UIViewController {
         // start streaming audio
         let failure = { (error: NSError) in print(error) }
         let stopStreaming = speechToText.transcribe(settings, failure: failure) { results in
+            
             let failure = { (error: NSError) in print("\(error)") }
             let speech = results.last?.alternatives.last?.transcript
             self.toneAnalyzer.getTone(speech!, failure: failure) { tones in
-                //convert toneAnalysis to swiftyJSON and add Person
-                var payload:JSON = tones.convertToSwiftyJSON()
-                payload["Person"] = JSON("User\(self.customUserCount)")
+                //convert toneAnalysis to swiftyJSON and add username and closest relation to movie character
+                var payload:JSON = [:]
+                payload = tones.convertToSwiftyJSON()
+                payload["Person"] = JSON("User \(self.customUserCount)")
+                payload["character"] = self.makeComparison(payload)
+                
+                //form request
+                let request = Request(url: self.cloudantURL, method: HttpMethod.POST)
+                request.headers = ["Content-Type":"application/json"]
+                
+                if let userString = payload.rawString(){
+                    request.sendString(userString, completionHandler:nil)//send to cloudant
+                    self.blueLogger.info("Successfully sent User\(self.customUserCount) ToneScore to Cloudant")
+                }else{
+                    self.blueLogger.warn("Unable to convert User\(self.customUserCount) ToneScore into a String")
+                }
+                                
+                Logger.send()
+                Analytics.send()
+                self.listeningIndicator.stopAnimating()
+                self.dispatchOnMainQueueAfterDelay(0) {
+                    self.performSegueWithIdentifier("resultsSegue", sender: tones.getResultsInDictionary(self.customUserCount))
+                }
+            }
+            self.customUserCount = self.customUserCount + 1
+        }
+        
+        customUserCount = customUserCount + 1
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//        
+//        var resultViewController = storyBoard.instantiateViewControllerWithIdentifier("ResultController") as! ResultsController
+////        resultViewController.scores["doc"] = self.customUser
+//        self.presentViewController(resultViewController, animated:true, completion:nil)
+    }
+    
+    @IBAction func typeManualMessage(sender: AnyObject) {
+        //show text field for manually entering text to be analyzed
+//        textField.hidden = !textField.hidden
+//        sendTextButton.hidden = !sendTextButton.hidden
+        let alert = UIAlertController(title: "", message: "Enter Text", preferredStyle: .Alert)
+        alert.addTextFieldWithConfigurationHandler({(textField) -> Void in
+            //
+        })
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {(action) -> Void in
+            let text = alert.textFields![0].text
+            
+            let failure = { (error: NSError) in print(error) }
+            self.toneAnalyzer.getTone(text!, failure: failure) { tones in
+                //convert toneAnalysis to swiftyJSON and add username and closest relation to movie character
+                var payload:JSON = [:]
+                payload = tones.convertToSwiftyJSON()
+                payload["Person"] = JSON("User \(self.customUserCount)")
+                payload["character"] = self.makeComparison(payload)
                 
                 //form request
                 let request = Request(url: self.cloudantURL, method: HttpMethod.POST)
@@ -280,41 +351,46 @@ class ViewController: UIViewController {
                 
                 Logger.send()
                 Analytics.send()
+                self.dispatchOnMainQueueAfterDelay(0) {
+                    self.performSegueWithIdentifier("resultsSegue", sender: tones.getResultsInDictionary(self.customUserCount))
+                }
             }
-        }
-        
-        customUserCount = customUserCount + 1
-        
+            self.customUserCount = self.customUserCount + 1
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    @IBAction func typeManualMessage(sender: AnyObject) {
-        //show text field for manually entering text to be analyzed
-        textField.hidden = !textField.hidden
-        sendTextButton.hidden = !sendTextButton.hidden
-    }
-    @IBAction func analyzeToneOfText(sender: AnyObject) {
+    private func makeComparison(user:JSON)->JSON{
+        var closestRelationCharacter:MovieCharacter?
+        var lowestScore:Double = 100.0
         
-        let text = textField.text
-        let failure = { (error: NSError) in print(error) }
-        self.toneAnalyzer.getTone(text!, failure: failure) { tones in
-            //convert toneAnalysis to swiftyJSON and add Person
-            var payload:JSON = tones.convertToSwiftyJSON()
-            payload["Person"] = JSON("User\(self.customUserCount)")
-            
-            //form request
-            let request = Request(url: self.cloudantURL, method: HttpMethod.POST)
-            request.headers = ["Content-Type":"application/json"]
-            
-            if let userString = payload.rawString(){
-                request.sendString(userString, completionHandler:nil)//send to cloudant
-                self.blueLogger.info("Successfully sent User\(self.customUserCount) ToneScore to Cloudant")
-            }else{
-                self.blueLogger.warn("Unable to convert User\(self.customUserCount) ToneScore into a String")
+        for character:MovieCharacter in self.characterList{
+            var score:Double = 0.0
+            let characterJson = self.AverageScores[character]?.toJSON()
+            for tone:String in self.toneList{
+                score = score + abs(user.getToneScore(tone) - (characterJson?.getToneScore(tone))!)
             }
-            
-            Logger.send()
-            Analytics.send()
+            if score < lowestScore{
+                closestRelationCharacter = character
+                lowestScore = score
+            }
         }
-        customUserCount = customUserCount + 1
+        return JSON(closestRelationCharacter!.rawValue)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "resultsSegue") {
+            let svc = segue.destinationViewController as! ResultsController;
+            svc.scores = sender as! [String:Double]
+        }
+    }
+    
+    func dispatchOnMainQueueAfterDelay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))+100
+            ),
+            dispatch_get_main_queue(), closure)
     }
 }
