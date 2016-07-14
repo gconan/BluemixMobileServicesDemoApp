@@ -16,7 +16,6 @@ import BMSAnalytics
 class ViewController: UIViewController {
     
     @IBOutlet weak var typeMessageButton: UIButton!
-    @IBOutlet weak var sendCodeButton: UIButton!
     @IBOutlet weak var talkButton: UIButton!
     @IBOutlet weak var listeningIndicator: UIActivityIndicatorView!
     
@@ -63,9 +62,6 @@ class ViewController: UIViewController {
         
         self.listeningIndicator.stopAnimating()
         customUserCount = 0
-        
-        sendCodeButton.layer.cornerRadius = 10
-        sendCodeButton.clipsToBounds = true
         
         typeMessageButton.layer.cornerRadius = 10
         typeMessageButton.clipsToBounds = true
@@ -163,6 +159,10 @@ class ViewController: UIViewController {
         }else{
             blueLogger.warn("Unable to convert Ron's ToneScore into a String")
         }
+        let alert = UIAlertController(title: "Ron Burgandy", message: "Check Slack to see Ron's tone analysis", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
         
         //send info to analytics
         Logger.send()
@@ -188,6 +188,10 @@ class ViewController: UIViewController {
         }else{
             blueLogger.warn("Unable to convert Darth's ToneScore into a String")
         }
+        let alert = UIAlertController(title: "Darth Vader", message: "Check Slack to see Vader's tone analysis", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
         
         Logger.send()
         Analytics.send()
@@ -212,6 +216,10 @@ class ViewController: UIViewController {
         }else{
             blueLogger.warn("Unable to convert Jack's ToneScore into a String")
         }
+        let alert = UIAlertController(title: "Captain Jack Sparrow", message: "Check Slack to see Captain Jack's tone analysis", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
         
         Logger.send()
         Analytics.send()
@@ -236,6 +244,10 @@ class ViewController: UIViewController {
         }else{
             blueLogger.warn("Unable to convert James' ToneScore into a String")
         }
+        let alert = UIAlertController(title: "James Bond", message: "Check Slack to see Bond's tone analysis", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
 
         Logger.send()
         Analytics.send()
@@ -260,6 +272,11 @@ class ViewController: UIViewController {
         }else{
             blueLogger.warn("Unable to convert Dory's ToneScore into a String")
         }
+        
+        let alert = UIAlertController(title: "Dory", message: "Check Slack to see Dory's tone analysis", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
         
         Logger.send()
         Analytics.send()
@@ -289,6 +306,7 @@ class ViewController: UIViewController {
                 payload = tones.convertToSwiftyJSON()
                 payload["Person"] = JSON("User \(self.customUserCount)")
                 payload["character"] = self.makeComparison(payload)
+                payload["message"] = JSON(speech!)
                 
                 //form request
                 let request = Request(url: self.cloudantURL, method: HttpMethod.POST)
@@ -321,12 +339,9 @@ class ViewController: UIViewController {
     
     @IBAction func typeManualMessage(sender: AnyObject) {
         //show text field for manually entering text to be analyzed
-//        textField.hidden = !textField.hidden
-//        sendTextButton.hidden = !sendTextButton.hidden
+        
         let alert = UIAlertController(title: "", message: "Enter Text", preferredStyle: .Alert)
-        alert.addTextFieldWithConfigurationHandler({(textField) -> Void in
-            //
-        })
+        alert.addTextFieldWithConfigurationHandler({(textField) -> Void in})
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {(action) -> Void in
             let text = alert.textFields![0].text
             
@@ -337,6 +352,7 @@ class ViewController: UIViewController {
                 payload = tones.convertToSwiftyJSON()
                 payload["Person"] = JSON("User \(self.customUserCount)")
                 payload["character"] = self.makeComparison(payload)
+                payload["message"] = JSON(text!)
                 
                 //form request
                 let request = Request(url: self.cloudantURL, method: HttpMethod.POST)
@@ -367,6 +383,7 @@ class ViewController: UIViewController {
         for character:MovieCharacter in self.characterList{
             var score:Double = 0.0
             let characterJson = self.AverageScores[character]?.toJSON()
+            
             for tone:String in self.toneList{
                 score = score + abs(user.getToneScore(tone) - (characterJson?.getToneScore(tone))!)
             }
@@ -375,6 +392,7 @@ class ViewController: UIViewController {
                 lowestScore = score
             }
         }
+        ResultsController.character = closestRelationCharacter!.rawValue
         return JSON(closestRelationCharacter!.rawValue)
     }
     

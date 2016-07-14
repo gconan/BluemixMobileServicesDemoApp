@@ -39,7 +39,7 @@ public class ResultsController: UIViewController{
     
     @IBOutlet weak var tentText: UITextField!
     
-    
+    public static var character:String?
     
     public var scores:[String:Double] = [:]
     
@@ -59,5 +59,17 @@ public class ResultsController: UIViewController{
         confidentText.text = "\(scores["Confident"]!)"
         tentText.text = "\(scores["Tentative"]!)"
         
+        
+        let alert = UIAlertController(title: "Results!", message: "Your tone most relates to \(ResultsController.character!)", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Cool!", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    override public func viewDidAppear(bool:Bool){
+        let alert = UIAlertController(title: "Results!", message: "Your tone most relates to \(ResultsController.character!)", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Cool!", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
