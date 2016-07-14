@@ -11,9 +11,8 @@ I created the app for BlueChasm's Developer Day in Houston on July 14, 2016. The
 
 
 ### The app contains these frameworks:
- * [Bluemix Mobile Analytics](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html) (Beta Coming Soon!)
+ * [Bluemix Mobile Analytics](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html) (Beta Coming Soon!) [(Documentation)](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html)
     * Shows Analytics related to app usage and logging
-    * [Analytics Documentation](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html)
  * [Watson Speech to Text](https://new-console.ng.bluemix.net/catalog/services/speech-to-text/)
     * Transcribes speech input to the device to text
     * [Speech to Text Documentation](http://www.ibm.com/watson/developercloud/speech-to-text/api/v1/)
