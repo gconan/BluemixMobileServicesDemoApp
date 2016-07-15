@@ -9,42 +9,38 @@ A demo iOS Swift app that shows Mobile Analytics, Watson, and OpenWhisk used to 
 
 I created the app for BlueChasm's Developer Day in Houston on July 14, 2016. The app is meant to show how easy it is to creat powerful apps using microservices found on [Bluemix](https://new-console.ng.bluemix.net/)
 
-
-### The app contains these frameworks:
- * [Bluemix Mobile Analytics](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html) (Beta Coming Soon!)
-    * Shows Analytics related to app usage and logging
-    * [Documentation](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html)
- * [Watson Speech to Text](https://new-console.ng.bluemix.net/catalog/services/speech-to-text/) 
-    * Transcribes speech input to the device to text
-    * [Documentation](http://www.ibm.com/watson/developercloud/speech-to-text/api/v1/)
- * [Watson Tone Analysis](https://new-console.ng.bluemix.net/catalog/services/tone-analyzer/)
-    * Analyzes the tone of text provided to the service
-    * [Documentation](http://www.ibm.com/watson/developercloud/tone-analyzer/api/v3/#introduction)
- * [Swifty JSON](https://github.com/SwiftyJSON/SwiftyJSON)
-    * Makes working with JSON in Swift easier
-
 ### Required Bluemix services:
  * [Open Whisk](https://new-console.ng.bluemix.net/openwhisk/?cm_mmc=developerWorks-_-dWdevcenter-_-open-_-lp)
     * Used to detect Cloudant Database changes and post the changes to [Slack](https://slack.com/)
-    * [Documentation](https://developer.ibm.com/open/openwhisk/)
+    * [Open Whisk Documentation](https://developer.ibm.com/open/openwhisk/)
  * [Cloudant](https://new-console.ng.bluemix.net/catalog/services/cloudant-nosql-db/)
     * A NoSQL database to store Tone Analysis results
-    * [Documentation] (https://docs.cloudant.com/authorization.html)
+    * [Cloudant Documentation](https://docs.cloudant.com/authorization.html)
  * [Watson Speech to Text](https://new-console.ng.bluemix.net/catalog/services/speech-to-text/)
     * Uses cognitive knowledge of the composition of an audio signal to generate an accurate transcription
     * [Documentation](https://www.ibm.com/watson/developercloud/speech-to-text.html)
  * [Watson Tone Analyzer](https://new-console.ng.bluemix.net/catalog/services/tone-analyzer/)
     * Uses cognitive linguistic analysis to detect three types of tones from text: emotion, social tendencies, and language style
     * [Documentation](https://www.ibm.com/watson/developercloud/tone-analyzer/api/v3/)
+ * [Bluemix Mobile Analytics](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html) (Beta Coming Soon!)
+    * Shows Analytics related to app usage and logging
+    * [Analytics Documentation](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html)
 
 ## To Run the App
+ * Provision each of the services above in Bluemix
+    * Click the service title links above
+    * Give your service a name, then click create
+    * **Note:** Analytics is not in Beta yet, you will not be able to use analytics until then
  * Clone or fork this repository
  * `cd BluemixMobileServicesDemoApp/`
  * Ensure that you have [Carthage](https://github.com/Carthage/Carthage#installing-carthage)
  * `carthage update --platform iOS`
+    * Will install the SDKs associated with the Bluemix services listed above.
+    * Will also install [Swifty JSON](https://github.com/SwiftyJSON/SwiftyJSON) to make working with JSON in Swift easier
  * Once carthage finishes (can take a while to build all the Watson SDKs), open the project
  * Run the app
-   * You must enter all of your Bluemix credentials where  you see tags like \<enter your username here\>
+   * You must enter all of your Bluemix credentials where you see the old credentials
+      * On each service page, there is a credentials tab, which will contain the necessary credentials for your app to run properly
    * **Note:** the microphone only works with a physical device, which requires an Apple Developer License to install an app on real phone. But you can still enter a message using the text box.
  * Click on any of the movie characters to have their tone analyzed(will save to your Cloudant DB)
  * Send a custom message(by voice or text) for analyzation then see which character your tone most aligns with
