@@ -11,6 +11,8 @@ import SwiftyJSON
 
 public class ResultsController: UIViewController{
     
+    @IBOutlet weak var backButton: UIButton!
+    
     @IBOutlet weak var nameText: UITextField!
     
     @IBOutlet weak var angerText: UITextField!
@@ -44,6 +46,10 @@ public class ResultsController: UIViewController{
     public var scores:[String:Double] = [:]
     
     override public func viewDidLoad() {
+        //UI init
+        backButton.layer.cornerRadius = 10
+        backButton.clipsToBounds = true
+        
         nameText.text = "User \(Int(scores["Person"]!))"
         angerText.text = "\(scores["Anger"]!)"
         disgustText.text = "\(scores["Disgust"]!)"
@@ -58,18 +64,13 @@ public class ResultsController: UIViewController{
         analyticalText.text = "\(scores["Analytical"]!)"
         confidentText.text = "\(scores["Confident"]!)"
         tentText.text = "\(scores["Tentative"]!)"
-        
-        
-        let alert = UIAlertController(title: "Results!", message: "Your tone most relates to \(ResultsController.character!)", preferredStyle: UIAlertControllerStyle.Alert)
-        
-        alert.addAction(UIAlertAction(title: "Cool!", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     override public func viewDidAppear(bool:Bool){
+        //alert to inform user which character their tone relates to
         let alert = UIAlertController(title: "Results!", message: "Your tone most relates to \(ResultsController.character!)", preferredStyle: UIAlertControllerStyle.Alert)
         
-        alert.addAction(UIAlertAction(title: "Cool!", style: UIAlertActionStyle.Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cool!", style: UIAlertActionStyle.Default, handler: nil))//i know, it cheesy, but it is pretty cool stuff
         self.presentViewController(alert, animated: true, completion: nil)
     }
 }

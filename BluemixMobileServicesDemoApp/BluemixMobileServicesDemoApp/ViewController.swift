@@ -20,17 +20,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var listeningIndicator: UIActivityIndicatorView!
     
     
-    //Bluemix info
-    private let cloudantURL:String = "https://756b57dd-f7bb-4721-adeb-9e7f45c99497-bluemix.cloudant.com/personality_insights/"
-    private let blueLogger: Logger = Logger.logger(forName: "DemoAppViewController")
-    private let toneAnalyzer = ToneAnalyzer(username: "ef9ec932-f667-4c95-ad59-abee1c31b7cb", password: "UeT1J8F2oN3N", version: "2016-05-10", serviceURL: "https://gateway.watsonplatform.net/tone-analyzer/api")
+    //Bluemix initialization
+    //*** All credentials are no longer in service, but are here to show how to use them ***
+    private let cloudantURL:String = "https://756b5797dd-f7bb-4721-adeb-9e7f75c99497-bluemix.cloudant.com/personality_insights/"
+    private let toneAnalyzer = ToneAnalyzer(username: "ef9ec932-f467-4c95-ad59-abee1c31a7cb", password: "UeT1J2F2oN3N", version: "2016-05-10", serviceURL: "https://gateway.watsonplatform.net/tone-analyzer/api")
     
     //keep the average scores to quickly compare real users' tones
     var AverageScores: [MovieCharacter: ToneScore] = [:]
+    
     //used to uniquely name users
     private var customUserCount: Int = 0
+    
     //used to pass scores to other viewController
     private var customUser:JSON = [:]
+    
+    //logger from BMSCore, reports to Mobile Analytics(Beta coming in September)
+    private let blueLogger: Logger = Logger.logger(forName: "DemoAppViewController")
     
     //Characters
     enum MovieCharacter:String{
@@ -40,6 +45,7 @@ class ViewController: UIViewController {
         case JamesBond = "James Bond"
         case Dory = "Dory"
     }
+    //lists to iterate over the tones an characters
     private let characterList = [MovieCharacter.DarthVader, MovieCharacter.Dory, MovieCharacter.JackSparrow, MovieCharacter.JamesBond, MovieCharacter.RonBurgandy]
     
     private let toneList = [ToneScore.Writing.Analytical.rawValue, ToneScore.Writing.Confident.rawValue, ToneScore.Writing.Tentative.rawValue, ToneScore.Social.Agreeableness.rawValue, ToneScore.Social.Conscientiousness.rawValue, ToneScore.Social.Extraversion.rawValue, ToneScore.Social.Neuroticism.rawValue, ToneScore.Social.Openness.rawValue, ToneScore.Emotions.Anger.rawValue, ToneScore.Emotions.Disgust.rawValue, ToneScore.Emotions.Fear.rawValue, ToneScore.Emotions.Joy.rawValue, ToneScore.Emotions.Sadness.rawValue]
@@ -60,18 +66,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //UI init
         self.listeningIndicator.stopAnimating()
-        customUserCount = 0
         
-        typeMessageButton.layer.cornerRadius = 10
-        typeMessageButton.clipsToBounds = true
+        self.typeMessageButton.layer.cornerRadius = 10
+        self.typeMessageButton.clipsToBounds = true
         
-        talkButton.layer.cornerRadius = 10
-        talkButton.clipsToBounds = true
+        self.talkButton.layer.cornerRadius = 10
+        self.talkButton.clipsToBounds = true
         
         //initialization of Analytics
         BMSClient.sharedInstance.initializeWithBluemixAppRoute(nil, bluemixAppGUID: nil, bluemixRegion:".stage1.ng.bluemix.net")//region set for stage1, experimental
-        Analytics.initializeWithAppName("BluemixMovileServicesDemoApp", apiKey: "2baf6285-258a-48dc-9009-92036ee4a89c", deviceEvents: DeviceEvent.LIFECYCLE)
+        Analytics.initializeWithAppName("BluemixMovileServicesDemoApp", apiKey: "2baf6275-258a-48dc-9009-92031ee4a89c", deviceEvents: DeviceEvent.LIFECYCLE)
         Analytics.enabled = true
         Logger.logStoreEnabled = true
         
@@ -83,10 +89,13 @@ class ViewController: UIViewController {
         self.AverageScores[MovieCharacter.JamesBond] = ToneScore()
         self.AverageScores[MovieCharacter.Dory] = ToneScore()
         
+        self.customUserCount = 0
+
+        
         //get tone score for all Ron quotes
         for s:String in RonB_Quotes{
             let failure = { (error: NSError) in print("SOME ERROR: \(error)") }
-            toneAnalyzer.getTone(s, failure: failure) { tones in
+            self.toneAnalyzer.getTone(s, failure: failure) { tones in
                 self.AverageScores[MovieCharacter.RonBurgandy]?.addToAverage(tones.convertToSwiftyJSON())
             }
         }
@@ -102,7 +111,7 @@ class ViewController: UIViewController {
         //get tone score for all Jack quotes
         for s:String in JackS_Quotes{
             let failure = { (error: NSError) in print("SOME ERROR: \(error)") }
-            toneAnalyzer.getTone(s, failure: failure) { tones in
+            self.toneAnalyzer.getTone(s, failure: failure) { tones in
                 self.AverageScores[MovieCharacter.JackSparrow]?.addToAverage(tones.convertToSwiftyJSON())
             }
         }
@@ -110,7 +119,7 @@ class ViewController: UIViewController {
         //get tone score for all James quotes
         for s:String in JamesB_Quotes{
             let failure = { (error: NSError) in print("SOME ERROR: \(error)") }
-            toneAnalyzer.getTone(s, failure: failure) { tones in
+            self.toneAnalyzer.getTone(s, failure: failure) { tones in
                 self.AverageScores[MovieCharacter.JamesBond]?.addToAverage(tones.convertToSwiftyJSON())
             }
         }
@@ -118,7 +127,7 @@ class ViewController: UIViewController {
         //get tone score for all Dory quotes
         for s:String in Dory_Quotes{
             let failure = { (error: NSError) in print("SOME ERROR: \(error)") }
-            toneAnalyzer.getTone(s, failure: failure) { tones in
+            self.toneAnalyzer.getTone(s, failure: failure) { tones in
                 self.AverageScores[MovieCharacter.Dory]?.addToAverage(tones.convertToSwiftyJSON())
             }
         }
@@ -140,7 +149,7 @@ class ViewController: UIViewController {
     
     @IBAction func ronBurgandy(sender: AnyObject) {
         //log to analytics, can use to count number of times the button is clicked
-        blueLogger.info("Ron Burgandy")
+        self.blueLogger.info("Ron Burgandy")
         
         //build a request with BMSCore
         let request = Request(url: cloudantURL, method: HttpMethod.POST)
@@ -153,9 +162,13 @@ class ViewController: UIViewController {
         //get string to pass as body to request then send
         if let ronJSONstring = ronJSON.rawString(){
             request.sendString(ronJSONstring, completionHandler: { (resp, error) in
-                            })
-            //request.sendString(ronJSONstring, completionHandler: )//send to cloudant
-            blueLogger.info("Successfully sent Ron's ToneScore to Cloudant")
+                if error != nil {
+                    self.blueLogger.error(error.debugDescription)
+                }else{
+                    self.blueLogger.info("Successfully sent Ron's ToneScore to Cloudant")
+                }
+            })
+            
         }else{
             blueLogger.warn("Unable to convert Ron's ToneScore into a String")
         }
@@ -183,8 +196,13 @@ class ViewController: UIViewController {
         
         //get string to pass as body to request then send
         if let darthJSONstring = darthJSON.rawString(){
-            request.sendString(darthJSONstring, completionHandler:nil)//send to cloudant
-            blueLogger.info("Successfully sent Darth's ToneScore to Cloudant")
+            request.sendString(darthJSONstring, completionHandler: { (resp, error) in
+                if error != nil {
+                    self.blueLogger.error(error.debugDescription)
+                }else{
+                    self.blueLogger.info("Successfully sent Darth's ToneScore to Cloudant")
+                }
+            })
         }else{
             blueLogger.warn("Unable to convert Darth's ToneScore into a String")
         }
@@ -211,8 +229,13 @@ class ViewController: UIViewController {
         
         //get string to pass as body to request then send
         if let jackJSONstring = jackJSON.rawString(){
-            request.sendString(jackJSONstring, completionHandler:nil)//send to cloudant
-            blueLogger.info("Successfully sent Jack's ToneScore to Cloudant")
+            request.sendString(jackJSONstring, completionHandler: { (resp, error) in
+                if error != nil {
+                    self.blueLogger.error(error.debugDescription)
+                }else{
+                    self.blueLogger.info("Successfully sent Jack's ToneScore to Cloudant")
+                }
+            })
         }else{
             blueLogger.warn("Unable to convert Jack's ToneScore into a String")
         }
@@ -239,8 +262,13 @@ class ViewController: UIViewController {
         
         //get string to pass as body to request then send
         if let jamesJSONstring = jamesJSON.rawString(){
-            request.sendString(jamesJSONstring, completionHandler:nil)//send to cloudant
-            blueLogger.info("Successfully sent James' ToneScore to Cloudant")
+            request.sendString(jamesJSONstring, completionHandler: { (resp, error) in
+                if error != nil {
+                    self.blueLogger.error(error.debugDescription)
+                }else{
+                    self.blueLogger.info("Successfully sent James' ToneScore to Cloudant")
+                }
+            })
         }else{
             blueLogger.warn("Unable to convert James' ToneScore into a String")
         }
@@ -267,8 +295,13 @@ class ViewController: UIViewController {
         
         //get string to pass as body to request then send
         if let doryJSONstring = doryJSON.rawString(){
-            request.sendString(doryJSONstring, completionHandler:nil)//send to cloudant
-            blueLogger.info("Successfully sent Dory's ToneScore to Cloudant")
+            request.sendString(doryJSONstring, completionHandler: { (resp, error) in
+                if error != nil {
+                    self.blueLogger.error(error.debugDescription)
+                }else{
+                    self.blueLogger.info("Successfully sent Dory's ToneScore to Cloudant")
+                }
+            })
         }else{
             blueLogger.warn("Unable to convert Dory's ToneScore into a String")
         }
@@ -300,6 +333,7 @@ class ViewController: UIViewController {
             
             let failure = { (error: NSError) in print("\(error)") }
             let speech = results.last?.alternatives.last?.transcript
+            
             self.toneAnalyzer.getTone(speech!, failure: failure) { tones in
                 //convert toneAnalysis to swiftyJSON and add username and closest relation to movie character
                 var payload:JSON = [:]
@@ -313,14 +347,20 @@ class ViewController: UIViewController {
                 request.headers = ["Content-Type":"application/json"]
                 
                 if let userString = payload.rawString(){
-                    request.sendString(userString, completionHandler:nil)//send to cloudant
-                    self.blueLogger.info("Successfully sent User\(self.customUserCount) ToneScore to Cloudant")
+                    request.sendString(userString, completionHandler: { (resp, error) in
+                        if error != nil {
+                            self.blueLogger.error(error.debugDescription)
+                        }else{
+                            self.blueLogger.info("Successfully sent User\(self.customUserCount) ToneScore to Cloudant")
+                        }
+                    })
                 }else{
                     self.blueLogger.warn("Unable to convert User\(self.customUserCount) ToneScore into a String")
                 }
                                 
                 Logger.send()
                 Analytics.send()
+                
                 self.listeningIndicator.stopAnimating()
                 self.dispatchOnMainQueueAfterDelay(0) {
                     self.performSegueWithIdentifier("resultsSegue", sender: tones.getResultsInDictionary(self.customUserCount))
@@ -330,11 +370,6 @@ class ViewController: UIViewController {
         }
         
         customUserCount = customUserCount + 1
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//        
-//        var resultViewController = storyBoard.instantiateViewControllerWithIdentifier("ResultController") as! ResultsController
-////        resultViewController.scores["doc"] = self.customUser
-//        self.presentViewController(resultViewController, animated:true, completion:nil)
     }
     
     @IBAction func typeManualMessage(sender: AnyObject) {
@@ -359,8 +394,13 @@ class ViewController: UIViewController {
                 request.headers = ["Content-Type":"application/json"]
                 
                 if let userString = payload.rawString(){
-                    request.sendString(userString, completionHandler:nil)//send to cloudant
-                    self.blueLogger.info("Successfully sent User\(self.customUserCount) ToneScore to Cloudant")
+                    request.sendString(userString, completionHandler: { (resp, error) in
+                        if error != nil {
+                            self.blueLogger.error(error.debugDescription)
+                        }else{
+                            self.blueLogger.info("Successfully sent User\(self.customUserCount) ToneScore to Cloudant")
+                        }
+                    })
                 }else{
                     self.blueLogger.warn("Unable to convert User\(self.customUserCount) ToneScore into a String")
                 }
