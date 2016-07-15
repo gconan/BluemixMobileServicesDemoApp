@@ -2,7 +2,7 @@
 [![Swift 2.2](https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-A demo iOS app that shows Mobile Analytics, Watson, and OpenWhisk used to analyze tone and post to a slack channel.
+A demo iOS Swift app that shows Mobile Analytics, Watson, and OpenWhisk used to analyze tone and post to a slack channel.
 
 
 ## About the App
@@ -11,33 +11,31 @@ I created the app for BlueChasm's Developer Day in Houston on July 14, 2016. The
 
 
 ### The app contains these frameworks:
- * [Bluemix Mobile Analytics](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html) (Beta Coming Soon!)
+ * [Bluemix Mobile Analytics](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html) (Beta Coming Soon!) [(Documentation)](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html)
     * Shows Analytics related to app usage and logging
-    * [Analytics Documentation](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html)
+ * [Watson Speech to Text](https://new-console.ng.bluemix.net/catalog/services/speech-to-text/) [(Documentation)](http://www.ibm.com/watson/developercloud/speech-to-text/api/v1/)
 
- * [Watson Speech to Text](https://new-console.ng.bluemix.net/catalog/services/speech-to-text/)
     * Transcribes speech input to the device to text
-    * [Speech to Text Documentation](http://www.ibm.com/watson/developercloud/speech-to-text/api/v1/)
+ * [Watson Tone Analysis](https://new-console.ng.bluemix.net/catalog/services/tone-analyzer/) [(Documentation)](http://www.ibm.com/watson/developercloud/tone-analyzer/api/v3/#introduction)
 
- * [Watson Tone Analysis](https://new-console.ng.bluemix.net/catalog/services/tone-analyzer/)
     * Analyzes the tone of text provided to the service
-    * [Tone Analysis Documentation](http://www.ibm.com/watson/developercloud/tone-analyzer/api/v3/#introduction)
 
  * [Swifty JSON](https://github.com/SwiftyJSON/SwiftyJSON)
     * Makes working with JSON in Swift easier
 
-### The app also uses these Bluemix services:
- * [Open Whisk](https://new-console.ng.bluemix.net/openwhisk/?cm_mmc=developerWorks-_-dWdevcenter-_-open-_-lp)
+### Required Bluemix services:
+ * [Open Whisk](https://new-console.ng.bluemix.net/openwhisk/?cm_mmc=developerWorks-_-dWdevcenter-_-open-_-lp) [(Documentation)](https://developer.ibm.com/open/openwhisk/)
     * Used to detect Cloudant Database changes and post the changes to [Slack](https://slack.com/)
-    * [Open Whisk Documentation](https://developer.ibm.com/open/openwhisk/)
+ * [Cloudant](https://new-console.ng.bluemix.net/catalog/services/cloudant-nosql-db/) [(Documentation)] (https://docs.cloudant.com/authorization.html)
     
- * [Cloudant](https://new-console.ng.bluemix.net/catalog/services/cloudant-nosql-db/)
     * A NoSQL database to store Tone Analysis results
-    * [Cloudant Documentation](https://docs.cloudant.com/authorization.html)
-
+ * [Watson Speech to Text](https://new-console.ng.bluemix.net/catalog/services/speech-to-text/) [(Documentation)](https://www.ibm.com/watson/developercloud/speech-to-text.html)
+    * Uses cognitive knowledge of the composition of an audio signal to generate an accurate transcription
+ * [Watson Tone Analyzer](https://new-console.ng.bluemix.net/catalog/services/tone-analyzer/) [(Documentation)](https://www.ibm.com/watson/developercloud/tone-analyzer/api/v3/)
+    * Uses cognitive linguistic analysis to detect three types of tones from text: emotion, social tendencies, and language style
 
 ## To Run the App
- * clone or fork this repository
+ * Clone or fork this repository
  * `cd BluemixMobileServicesDemoApp/`
  * Ensure that you have [Carthage](https://github.com/Carthage/Carthage#installing-carthage)
  * `carthage update --platform iOS`
