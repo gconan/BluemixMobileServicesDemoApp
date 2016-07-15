@@ -14,12 +14,15 @@ I created the app for BlueChasm's Developer Day in Houston on July 14, 2016. The
  * [Bluemix Mobile Analytics](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html) (Beta Coming Soon!)
     * Shows Analytics related to app usage and logging
     * [Analytics Documentation](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html)
+
  * [Watson Speech to Text](https://new-console.ng.bluemix.net/catalog/services/speech-to-text/)
     * Transcribes speech input to the device to text
     * [Speech to Text Documentation](http://www.ibm.com/watson/developercloud/speech-to-text/api/v1/)
+
  * [Watson Tone Analysis](https://new-console.ng.bluemix.net/catalog/services/tone-analyzer/)
     * Analyzes the tone of text provided to the service
     * [Tone Analysis Documentation](http://www.ibm.com/watson/developercloud/tone-analyzer/api/v3/#introduction)
+
  * [Swifty JSON](https://github.com/SwiftyJSON/SwiftyJSON)
     * Makes working with JSON in Swift easier
 
@@ -27,6 +30,7 @@ I created the app for BlueChasm's Developer Day in Houston on July 14, 2016. The
  * [Open Whisk](https://new-console.ng.bluemix.net/openwhisk/?cm_mmc=developerWorks-_-dWdevcenter-_-open-_-lp)
     * Used to detect Cloudant Database changes and post the changes to [Slack](https://slack.com/)
     * [Open Whisk Documentation](https://developer.ibm.com/open/openwhisk/)
+    
  * [Cloudant](https://new-console.ng.bluemix.net/catalog/services/cloudant-nosql-db/)
     * A NoSQL database to store Tone Analysis results
     * [Cloudant Documentation](https://docs.cloudant.com/authorization.html)
