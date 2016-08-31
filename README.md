@@ -37,7 +37,7 @@ I created the app for BlueChasm's Developer Day in Houston on July 14, 2016. The
  * `carthage update --platform iOS`
     * Will install the SDKs associated with the Bluemix services listed above.
     * Will also install [Swifty JSON](https://github.com/SwiftyJSON/SwiftyJSON) to make working with JSON in Swift easier
- * Once carthage finishes (can take a while to build all the Watson SDKs), open the project
+ * Once carthage finishes (can take a while (~20min) to build all the Watson SDKs), open the project
  * Run the app
    * You must enter all of your Bluemix credentials where you see the old credentials
       * On each service page, there is a credentials tab, which will contain the necessary credentials for your app to run properly
