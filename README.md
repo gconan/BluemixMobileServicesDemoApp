@@ -7,7 +7,7 @@ A demo iOS Swift app that shows Mobile Analytics, Watson, and OpenWhisk used to 
 
 ## About the App
 
-I created the app for BlueChasm's Developer Day in Houston on July 14, 2016. The app is meant to show how easy it is to creat powerful apps using microservices found on [Bluemix](https://new-console.ng.bluemix.net/)
+I created the app for BlueChasm's Developer Day in Houston on July 14, 2016. The app is meant to show how easy it is to creat powerful apps using various microservices found on [Bluemix](https://new-console.ng.bluemix.net/)
 
 ### Required Bluemix services:
  * [Open Whisk](https://new-console.ng.bluemix.net/openwhisk/?cm_mmc=developerWorks-_-dWdevcenter-_-open-_-lp)
