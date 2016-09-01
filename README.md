@@ -12,10 +12,10 @@ I created the app for BlueChasm's Developer Day in Houston on July 14, 2016. The
 
 ### Required Bluemix services:
  * [Open Whisk](https://new-console.ng.bluemix.net/openwhisk/?cm_mmc=developerWorks-_-dWdevcenter-_-open-_-lp)
-    * Used to detect Cloudant Database changes and post the changes to [Slack](https://slack.com/)
+    * Used to detect Cloudant Database changes, filter the new results, and post the changes to [Slack](https://slack.com/)
     * [Open Whisk Documentation](https://developer.ibm.com/open/openwhisk/)
  * [Cloudant](https://new-console.ng.bluemix.net/catalog/services/cloudant-nosql-db/)
-    * A NoSQL database to store Tone Analysis results
+    * A NoSQL database to store Tone Analysis results as JSON documents
     * [Cloudant Documentation](https://docs.cloudant.com/authorization.html)
  * [Watson Speech to Text](https://new-console.ng.bluemix.net/catalog/services/speech-to-text/)
     * Uses cognitive knowledge of the composition of an audio signal to generate an accurate transcription
